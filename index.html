@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyadeje Hope Foundation — Every Child Deserves Hope</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#C5A059', light: '#DCC287', dark: '#A68545' },
+                        natural: { 50: '#F9F8F6', 100: '#F2EFE9', 900: '#2A2A2A' },
+                        warm: { 50: '#FFFDF7', 100: '#FFF8E7' }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadein {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeinLeft {
+            0% { opacity: 0; transform: translateX(-30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeinRight {
+            0% { opacity: 0; transform: translateX(30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(197, 160, 89, 0); }
+        }
+        .animate-fadein { animation: fadein 1s ease-out forwards; }
+        .animate-fadein-left { animation: fadeinLeft 1s ease-out forwards; }
+        .animate-fadein-right { animation: fadeinRight 1s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.8s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .opacity-0-init { opacity: 0; }
+        .scroll-animate { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .scroll-animate.visible { opacity: 1; transform: translateY(0); }
+        .scroll-animate-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease-out; }
+        .scroll-animate-left.visible { opacity: 1; transform: translateX(0); }
+        .scroll-animate-right { opacity: 0; transform: translateX(30px); transition: all 0.8s ease-out; }
+        .scroll-animate-right.visible { opacity: 1; transform: translateX(0); }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(42,42,42,0.5), rgba(42,42,42,0.3), rgba(42,42,42,0.7)); }
+        .card-hover { transition: all 0.5s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .img-hover { overflow: hidden; }
+        .img-hover img { transition: all 0.8s ease; filter: grayscale(15%); }
+        .img-hover:hover img { transform: scale(1.03); filter: grayscale(0); }
+        .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .value-card { transition: all 0.3s ease; }
+        .value-card:hover { border-color: rgba(197,160,89,0.5); background: rgba(197,160,89,0.05); }
+        .stat-number { background: linear-gradient(135deg, #C5A059, #DCC287); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .donation-card { transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05); }
+        .donation-card:hover { border-color: rgba(197,160,89,0.4); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+        .toast { transform: translateY(100px); opacity: 0; transition: all 0.4s ease; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .objective-item { transition: all 0.4s ease; }
+        .objective-item:hover { background: rgba(197,160,89,0.03); }
+        .objective-item:hover .obj-number { background: #C5A059; color: #fff; }
+    </style>
+</head>
+<body class="bg-white text-natural-900 font-light">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-500" style="background: rgba(255,255,255,0.0);">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 h-24 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:border-gold/60 transition-colors duration-300" style="background: rgba(255,255,255,0.1);">
+                    <iconify-icon icon="ph:heart-bold" class="text-xl text-gold"></iconify-icon>
+                </div>
+                <div>
+                    <span class="text-white font-serif text-lg tracking-tight">Nyadeje</span>
+                    <span class="block text-[10px] uppercase tracking-[0.2em] text-white/60">Hope Foundation</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="#about" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">About</a>
+                <a href="#story" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Our Story</a>
+                <a href="#impact" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Impact</a>
+                <a href="#programs" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Programs</a>
+                <a href="#donate" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Donate</a>
+                <a href="#contact" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Contact</a>
+                <a href="#donate" class="ml-4 px-6 py-3 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">Support Us</a>
+            </div>
+            <button id="menuBtn" class="lg:hidden text-white" onclick="toggleMenu()">
+                <iconify-icon icon="ph:list-bold" class="text-2xl"></iconify-icon>
+            </button>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden bg-white/95 nav-blur border-t border-black/5">
+            <div class="px-6 py-6 flex flex-col gap-4">
+                <a href="#about" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">About</a>
+                <a href="#story" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Our Story</a>
+                <a href="#impact" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Impact</a>
+                <a href="#programs" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Programs</a>
+                <a href="#donate" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Donate</a>
+                <a href="#contact" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Contact</a>
+                <a href="#donate" onclick="toggleMenu()" class="mt-2 px-6 py-3 bg-gold text-white text-xs uppercase tracking-[0.15em] text-center font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">Support Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <img src="https://picsum.photos/seed/kenya-children-hope/1920/1080.jpg" alt="Children of Siaya County" class="absolute inset-0 w-full h-full object-cover" style="filter: brightness(0.7);">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="absolute top-1/4 left-8 w-24 h-24 border border-gold/20 rounded-full animate-float opacity-0-init animate-fadein delay-500"></div>
+        <div class="absolute bottom-1/3 right-12 w-16 h-16 border border-gold/15 rounded-full animate-float opacity-0-init animate-fadein delay-600" style="animation-delay: 1.5s;"></div>
+        <div class="relative z-10 max-w-screen-xl mx-auto px-4 md:px-8 text-center">
+            <div class="opacity-0-init animate-fadein">
+                <span class="inline-block text-[10px] uppercase tracking-[0.3em] text-gold-light mb-6 border border-gold/30 px-4 py-2 rounded-sm" style="backdrop-filter: blur(4px); background: rgba(197,160,89,0.1);">Siaya County, Kenya</span>
+            </div>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-8xl text-white font-normal leading-[1.1] tracking-tight opacity-0-init animate-fadein delay-100">
+                Every Child<br>
+                <span class="italic text-gold-light">Deserves Hope</span>
+            </h1>
+            <p class="mt-6 md:mt-8 text-white/70 font-light text-base md:text-lg max-w-2xl mx-auto leading-relaxed opacity-0-init animate-fadein delay-300">
+                Nyadeje Hope Foundation supports needy children through education, psychological support, and talent development — advocating for the rights of the most vulnerable in Siaya County.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center opacity-0-init animate-fadein delay-400">
+                <a href="#donate" class="px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm animate-pulse-gold">Donate Now</a>
+                <a href="#about" class="px-8 py-4 border border-white/30 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-white/10 transition-colors duration-300 rounded-sm" style="backdrop-filter: blur(4px);">Learn Our Story</a>
+            </div>
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0-init animate-fadein delay-600">
+                <a href="#about" class="flex flex-col items-center gap-2 text-white/40 hover:text-gold transition-colors duration-300">
+                    <span class="text-[9px] uppercase tracking-[0.2em]">Scroll</span>
+                    <iconify-icon icon="ph:caret-down" class="text-lg"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-natural-900 py-8 md:py-10">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+                <div class="scroll-animate">
+                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">30+</div>
+                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Years of Service</div>
+                </div>
+                <div class="scroll-animate" style="transition-delay: 0.1s;">
+                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">100+</div>
+                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Pupils Supported</div>
+                </div>
+                <div class="scroll-animate" style="transition-delay: 0.2s;">
+                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">3</div>
+                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Sub-Counties Served</div>
+                </div>
+                <div class="scroll-animate" style="transition-delay: 0.3s;">
+                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">6</div>
+                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Categories of Need</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section — FULL STORY -->
+    <section id="about" class="py-24 md:py-32 bg-white">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                <div class="scroll-animate-left img-hover rounded-sm overflow-hidden lg:sticky lg:top-28">
+                    <img src="https://picsum.photos/seed/african-mother-hope/800/1000.jpg" alt="Agnes - Founder" class="w-full h-[500px] lg:h-[600px] object-cover">
+                </div>
+
+                <div class="scroll-animate-right">
+                    <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">About Us</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                        A Legacy of <span class="italic text-gold">Love & Service</span>
+                    </h2>
+                    <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
+
+                    <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                        My name is Agnes Oduma, I am a widow and a mother of 3 children, whom I had raised single-handedly and with a lot of challenges that prompted me to start Nyadeje Hope Foundation to support needy children and advocate for their rights in Siaya County.
+                    </p>
+
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        My late mother <strong class="text-natural-900 font-normal">Jane Aoko Okuom</strong> was called <em>Nyadeje</em>, a name given due to her place of birth according to Luo culture. Nyadeje lived her life helping needy children, especially orphans and the less privileged within her community. She ensured that no child brought to her attention missed school due to a lack of uniform or school fees. She sold illicit brew (changaa), cassava, and maize from her shamba just to ensure that a child would go to school. Her great love and devotion to serve children spurred me to work very hard in my life, which enabled me to join the social work field.
+                    </p>
+
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        In 2023, she fell sick and later in the year 2024 she was diagnosed with cancer stage 4. While battling cancer, she was taking care of 4 of her step-sister's grandchildren after their mother died of HIV related complications. She breathed her last breath on 13/12/2025, and the children were left without anyone to support their education. Hence prompting me to stand in for them.
+                    </p>
+
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        Having vast experience in the social work-related field which had motivated me to start this foundation, I have been working with vulnerable children for over 30 years, and my dream was to start a project that would transform the lives of children who have an inadequate support system that could hinder them from achieving their dreams and also become a voice to the voiceless.
+                    </p>
+
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        My childhood was full of challenges, given that my parents had separated. I became vulnerable and hence subjecting myself to all forms of abuse, at a time I thought of committing suicide due to the trauma that I had but by the grace of God I survived the ordeal and today I am advocating for the rights of children.
+                    </p>
+
+                    <div class="mt-8 p-6 bg-natural-50 border-l-2 border-gold rounded-r-sm">
+                        <p class="font-serif italic text-natural-900 leading-relaxed">
+                            "I survived what many children are going through today. That survival gave me a calling — to be the voice of the voiceless, to stand where no one else would stand, and to ensure that no child in Siaya County is left behind."
+                        </p>
+                        <span class="block mt-3 text-[11px] uppercase tracking-[0.15em] text-gold">— Agnes Oduma, Founder</span>
+                    </div>
+
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-gold/40"></div>
+                        <span class="text-[11px] uppercase tracking-[0.15em] text-gray-400 italic font-serif">"Nyadeje" — A name that means love</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story / The Spark -->
+    <section id="story" class="py-24 md:py-32 bg-natural-50">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Our Story</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    The Boy at the <span class="italic text-gold">School Gate</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+                <div class="lg:col-span-2 scroll-animate-left img-hover rounded-sm overflow-hidden">
+                    <img src="https://picsum.photos/seed/school-gate-children/700/900.jpg" alt="Joseph's story" class="w-full h-[400px] lg:h-[500px] object-cover">
+                </div>
+
+                <div class="lg:col-span-3 scroll-animate-right">
+                    <p class="text-gray-500 font-light leading-relaxed text-lg">
+                        This foundation was established when I took my daughter to a new school called <strong class="text-natural-900 font-normal">Kawuondi Primary School</strong>. At the gate, I found Joseph, a 7-year-old boy sitting outside.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        Upon asking why he was not in school, he told me that his school fees had not been paid. He went home, but his mother insisted that he go back to school, without money. The boy was an orphan — his father died when he was 1 year old, and his mother had four other siblings that she was taking care of. Joseph had a torn uniform and shoes.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        I eventually paid his fee, but I was not able to buy uniforms due to financial constraints I was facing as a result of losing my job in the month of December 2025.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        I visited other primary schools around my village and found out that the problems affecting needy children were the same and most of them did not have good school uniforms, bags and shoes. Some children are walking barefoot while going to school because their guardians or parents cannot afford to buy shoes, and paying school fees is a problem too.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        These have affected their learning in a negative way — sometimes they miss school, which has contributed to a great drop in academic performance. Those who have torn uniforms, especially girls, have had their self-esteem affected.
+                    </p>
+
+                    <div class="mt-8 p-6 bg-white border-l-2 border-gold rounded-r-sm">
+                        <p class="font-serif italic text-natural-900 leading-relaxed">
+                            "My childhood was full of challenges. I became vulnerable and hence subjecting myself to all forms of abuse. At one time, I thought of committing suicide due to the trauma — but by the grace of God I survived. Today, I am advocating for the rights of children."
+                        </p>
+                        <span class="block mt-3 text-[11px] uppercase tracking-[0.15em] text-gold">— Agnes Oduma, Founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section id="impact" class="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold/3 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Vision & Mission</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    Guided by <span class="italic text-gold">Purpose</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="scroll-animate p-8 md:p-12 bg-natural-50 rounded-sm card-hover border border-transparent hover:border-gold/20">
+                    <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-6">
+                        <iconify-icon icon="ph:eye-bold" class="text-2xl text-gold"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl tracking-tight">Our Vision</h3>
+                    <div class="w-10 h-[1px] bg-gold/40 mt-4"></div>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        To create a community where every child is valued, supported, and equipped to reach their full potential.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-8 md:p-12 bg-natural-50 rounded-sm card-hover border border-transparent hover:border-gold/20" style="transition-delay: 0.15s;">
+                    <div class="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mb-6">
+                        <iconify-icon icon="ph:target-bold" class="text-2xl text-gold"></iconify-icon>
+                    </div>
+                    <h3 class="font-serif text-2xl tracking-tight">Our Mission</h3>
+                    <div class="w-10 h-[1px] bg-gold/40 mt-4"></div>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        Seeking to put God's love into action by providing education support, psychological support, and talent development to vulnerable children and advocating for their rights to achieve their full potential.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="mt-16 scroll-animate">
+                <h3 class="font-serif text-2xl tracking-tight text-center mb-10">Our Core Values</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
+                        <iconify-icon icon="ph:handshake-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Non-Discrimination</span>
+                    </div>
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
+                        <iconify-icon icon="ph:heart-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Best Interest of Child</span>
+                    </div>
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
+                        <iconify-icon icon="ph:cross-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Christ Centered</span>
+                    </div>
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
+                        <iconify-icon icon="ph:shield-check-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Transparency</span>
+                    </div>
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default col-span-2 md:col-span-1">
+                        <iconify-icon icon="ph:plant-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Sustainability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section (NEW) -->
+    <section id="objectives" class="py-24 md:py-32 bg-natural-50">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Our Objectives</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    Building a <span class="italic text-gold">Brighter Future</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                    These are the concrete goals that guide every effort of Nyadeje Hope Foundation — measurable, meaningful, and rooted in the real needs of the children we serve.
+                </p>
+            </div>
+
+            <div class="mt-16 space-y-0">
+                <!-- Objective 1 -->
+                <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm">
+                    <div class="md:col-span-1 flex-shrink-0">
+                        <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
+                            <span class="font-serif text-lg text-gold">1</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Enhance Smooth Learning for Needy Pupils</h4>
+                        <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
+                            Enhancing smooth learning for at least <strong class="text-natural-900 font-normal">100 needy children yearly in primary schools</strong> by buying uniforms, shoes, and school bags, and paying fees for at least <strong class="text-natural-900 font-normal">20 students yearly</strong> in various secondary schools — removing the barriers that keep children out of the classroom.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objective 2 -->
+                <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.1s;">
+                    <div class="md:col-span-1 flex-shrink-0">
+                        <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
+                            <span class="font-serif text-lg text-gold">2</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Restore Dignity & Build Self-Esteem</h4>
+                        <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
+                            Creating a conducive environment that enables a learner to have high self-esteem by ensuring that they dress well while in school — because every child deserves to feel confident, respected, and equal among their peers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objective 3 -->
+                <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.2s;">
+                    <div class="md:col-span-1 flex-shrink-0">
+                        <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
+                            <span class="font-serif text-lg text-gold">3</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Empower Children to Know Their Rights</h4>
+                        <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
+                            Empowering children to know their rights and to know the actions to be taken when their rights have been violated — equipping them with knowledge and courage to speak up and seek help when they need it most.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objective 4 -->
+                <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.3s;">
+                    <div class="md:col-span-1 flex-shrink-0">
+                        <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
+                            <span class="font-serif text-lg text-gold">4</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Nurture Talent Through Holiday Camps</h4>
+                        <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
+                            Holding talent development camps during the holidays, where children can be taught and nurtured in different fields like <strong class="text-natural-900 font-normal">art, music, technology</strong>, and more — helping them discover their God-given abilities beyond the classroom.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Objective 5 -->
+                <div class="scroll-animate objective-item border-t border-b border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.4s;">
+                    <div class="md:col-span-1 flex-shrink-0">
+                        <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
+                            <span class="font-serif text-lg text-gold">5</span>
+                        </div>
+                    </div>
+                    <div class="md:col-span-11">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Engage & Educate Parents in the Community</h4>
+                        <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
+                            Organizing parents' engagement forums in the community where parents will be trained and sensitized on <strong class="text-natural-900 font-normal">good parenting, substance abuse, child abuse, and health talks</strong> — because transforming a child's life starts with strengthening the family around them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="py-24 md:py-32 bg-natural-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-20 w-40 h-40 border border-gold rounded-full"></div>
+            <div class="absolute bottom-20 right-20 w-60 h-60 border border-gold rounded-full"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-gold rounded-full"></div>
+        </div>
+
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Who We Help</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight text-white">
+                    Children Who Need Us <span class="italic text-gold-light">Most</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:house-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Orphans & Vulnerable Children</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children whose parents died from HIV-related complications or other causes, left under the care of aging grandparents or relatives, whose socioeconomic status makes them vulnerable and open to exploitation and abuse.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group" style="transition-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:warning-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Children of Substance Abuse</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children coming from an imbalanced family where alcohol and drug abuse have taken control of their parents' lives and due to addiction, children are left without proper care.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group" style="transition-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:wallet-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Financially Unstable Families</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children who have both parents, but they are financially unstable due to their health condition or an inadequate source of income — unable to provide for basic needs and education.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group" style="transition-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:person-arms-spread-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Single-Parent Households</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children who are from single parents due to separation or divorce and the parent who is left is unable to support them adequately — leaving gaps in both emotional and financial support.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group" style="transition-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:accessibility-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Children with Special Needs</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children with special needs, including those with various forms of conditions such as autism, physical disability, and other challenges that require additional support, resources, and understanding.
+                    </p>
+                </div>
+
+                <div class="scroll-animate p-6 border border-white/10 rounded-sm hover:border-gold/30 transition-all duration-300 group" style="transition-delay: 0.3s;">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
+                        <iconify-icon icon="ph:shield-warning-bold" class="text-lg text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="text-white font-normal text-sm uppercase tracking-wide">Abused or At-Risk Children</h4>
+                    <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
+                        Children who are at risk of being abused or have been abused — needing protection, psychological support, safe spaces, and strong advocacy to ensure their rights are upheld.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs / Objectives -->
+    <section id="programs" class="py-24 md:py-32 bg-white">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Our Programs</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    What We <span class="italic text-gold">Do</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+            </div>
+
+            <div class="mt-16 space-y-0">
+                <div class="scroll-animate group border-t border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-natural-50 transition-colors duration-300 px-4 -mx-4 rounded-sm">
+                    <div class="md:col-span-1">
+                        <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">01</span>
+                    </div>
+                    <div class="md:col-span-4">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Education Support</h4>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="text-gray-500 font-light leading-relaxed">
+                            Enhancing smooth learning for at least 100 needy pupils by providing uniforms, shoes, and school bags. Paying school fees for at least 20 students in various secondary schools.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <iconify-icon icon="ph:graduation-cap-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </div>
+                </div>
+
+                <div class="scroll-animate group border-t border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-natural-50 transition-colors duration-300 px-4 -mx-4 rounded-sm" style="transition-delay: 0.1s;">
+                    <div class="md:col-span-1">
+                        <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">02</span>
+                    </div>
+                    <div class="md:col-span-4">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Dignity & Self-Esteem</h4>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="text-gray-500 font-light leading-relaxed">
+                            Creating a conducive environment that enables learners to have high self-esteem by ensuring they dress well while in school — restoring confidence and pride in their appearance.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <iconify-icon icon="ph:star-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </div>
+                </div>
+
+                <div class="scroll-animate group border-t border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-natural-50 transition-colors duration-300 px-4 -mx-4 rounded-sm" style="transition-delay: 0.2s;">
+                    <div class="md:col-span-1">
+                        <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">03</span>
+                    </div>
+                    <div class="md:col-span-4">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Rights Awareness</h4>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="text-gray-500 font-light leading-relaxed">
+                            Empowering children to know their rights and the actions to take when their rights have been violated — giving them a voice and the courage to use it.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <iconify-icon icon="ph:megaphone-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </div>
+                </div>
+
+                <div class="scroll-animate group border-t border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-natural-50 transition-colors duration-300 px-4 -mx-4 rounded-sm" style="transition-delay: 0.3s;">
+                    <div class="md:col-span-1">
+                        <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">04</span>
+                    </div>
+                    <div class="md:col-span-4">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Talent Development Camps</h4>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="text-gray-500 font-light leading-relaxed">
+                            Holding talent development camps during holidays where children are taught and nurtured in different fields like art, music, technology, and more.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <iconify-icon icon="ph:palette-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </div>
+                </div>
+
+                <div class="scroll-animate group border-t border-b border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center hover:bg-natural-50 transition-colors duration-300 px-4 -mx-4 rounded-sm" style="transition-delay: 0.4s;">
+                    <div class="md:col-span-1">
+                        <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">05</span>
+                    </div>
+                    <div class="md:col-span-4">
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Parent Engagement Forums</h4>
+                    </div>
+                    <div class="md:col-span-5">
+                        <p class="text-gray-500 font-light leading-relaxed">
+                            Organizing community forums where parents are trained and sensitized on good parenting, substance abuse, child abuse prevention, and health talks.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex justify-end">
+                        <iconify-icon icon="ph:users-three-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="py-24 md:py-32 bg-natural-50">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="scroll-animate-left">
+                    <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Where We Work</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                        Siaya County, <span class="italic text-gold">Kenya</span>
+                    </h2>
+                    <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
+                    <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                        Our foundation will be operating in Siaya County, working closely with schools, non-state actors in the area, and other government entities to identify and support the most vulnerable children in our community.
+                    </p>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-sm font-normal text-natural-900">Rarieda Sub-County</span>
+                                <p class="text-xs text-gray-400 mt-0.5">Primary area of operations</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-sm font-normal text-natural-900">Bondo Sub-County</span>
+                                <p class="text-xs text-gray-400 mt-0.5">Expanding reach and impact</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-sm font-normal text-natural-900">Ugenya Sub-County</span>
+                                <p class="text-xs text-gray-400 mt-0.5">Growing our community presence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-animate-right img-hover rounded-sm overflow-hidden">
+                    <img src="https://picsum.photos/seed/kenya-landscape-rural/800/700.jpg" alt="Siaya County landscape" class="w-full h-[400px] lg:h-[550px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/3 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Make a Difference</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    Support Our <span class="italic text-gold">Children</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                    Our model of operation is pinned on transparency and value for resources. Every resource we get will be directed to our beneficiaries and operations.
+                </p>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="scroll-animate donation-card p-8 bg-white rounded-sm">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5">
+                        <iconify-icon icon="ph:money-bold" class="text-2xl text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="font-serif text-xl tracking-tight">Financial Support</h4>
+                    <div class="w-10 h-[1px] bg-gold/30 mt-3"></div>
+                    <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">
+                        Any individual or entity that wishes to partner with us can reach out through our number. Financial support can be for one single element of our programs, an entire program, or multiple programs.
+                    </p>
+                    <div class="mt-6 space-y-3">
+                        <div class="p-3 bg-natural-50 rounded-sm">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-gray-400 block">M-Pesa</span>
+                            <span class="text-sm font-normal text-natural-900 mt-1 block">0725 435 344</span>
+                            <button onclick="copyToClipboard('0725435344', this)" class="mt-1 text-[10px] uppercase tracking-wider text-gold hover:text-gold-dark transition-colors cursor-pointer flex items-center gap-1">
+                                <iconify-icon icon="ph:copy" class="text-xs"></iconify-icon> Copy Number
+                            </button>
+                        </div>
+                        <div class="p-3 bg-natural-50 rounded-sm">
+                            <span class="text-[10px] uppercase tracking-[0.15em] text-gray-400 block">Equity Bank</span>
+                            <span class="text-sm font-normal text-natural-900 mt-1 block">1040197512071</span>
+                            <span class="text-xs text-gray-400 block mt-0.5">Nyadeje Hope Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-animate donation-card p-8 bg-white rounded-sm" style="transition-delay: 0.15s;">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5">
+                        <iconify-icon icon="ph:package-bold" class="text-2xl text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="font-serif text-xl tracking-tight">Material Donations</h4>
+                    <div class="w-10 h-[1px] bg-gold/30 mt-3"></div>
+                    <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">
+                        We accept and welcome donations that are in line with our programs. Your in-kind contributions directly reach the children who need them.
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">School Uniforms</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Clothes</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Shoes</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Foodstuffs</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Books</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">School Bags</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Sanitary Towels</span>
+                        <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">Inner Wears</span>
+                    </div>
+                </div>
+
+                <div class="scroll-animate donation-card p-8 bg-white rounded-sm" style="transition-delay: 0.3s;">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-5">
+                        <iconify-icon icon="ph:graduation-cap-bold" class="text-2xl text-gold"></iconify-icon>
+                    </div>
+                    <h4 class="font-serif text-xl tracking-tight">Capacity Building</h4>
+                    <div class="w-10 h-[1px] bg-gold/30 mt-3"></div>
+                    <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">
+                        We are open to getting support from a capacity-building and training perspective. Any intervention that can build the skills and knowledge of our staff and beneficiaries is welcome and encouraged.
+                    </p>
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="ph:check-circle-bold" class="text-gold flex-shrink-0"></iconify-icon>
+                            <span class="text-sm text-gray-500 font-light">Skills training for staff</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="ph:check-circle-bold" class="text-gold flex-shrink-0"></iconify-icon>
+                            <span class="text-sm text-gray-500 font-light">Beneficiary empowerment programs</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="ph:check-circle-bold" class="text-gold flex-shrink-0"></iconify-icon>
+                            <span class="text-sm text-gray-500 font-light">Organizational development support</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <iconify-icon icon="ph:check-circle-bold" class="text-gold flex-shrink-0"></iconify-icon>
+                            <span class="text-sm text-gray-500 font-light">Volunteer & mentorship opportunities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 scroll-animate text-center p-10 md:p-16 bg-natural-900 rounded-sm relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute -top-20 -right-20 w-80 h-80 border border-gold rounded-full"></div>
+                    <div class="absolute -bottom-20 -left-20 w-60 h-60 border border-gold rounded-full"></div>
+                </div>
+                <div class="relative z-10">
+                    <iconify-icon icon="ph:heart-bold" class="text-4xl text-gold mb-4"></iconify-icon>
+                    <h3 class="font-serif text-2xl md:text-3xl text-white tracking-tight">Your Support Changes Lives</h3>
+                    <p class="mt-3 text-white/50 font-light max-w-xl mx-auto">
+                        Whether through finances, materials, or skills — every contribution helps a child stay in school, build confidence, and dream bigger.
+                    </p>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:0725435344" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">
+                            <iconify-icon icon="ph:phone-bold"></iconify-icon> Call Us
+                        </a>
+                        <button onclick="copyToClipboard('0725435344', this)" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-white/10 transition-colors duration-300 rounded-sm">
+                            <iconify-icon icon="ph:copy"></iconify-icon> Copy M-Pesa Number
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mother's Tribute -->
+    <section class="py-24 md:py-32 bg-natural-50">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="scroll-animate-left order-2 lg:order-1">
+                    <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">In Loving Memory</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                        Remembering <span class="italic text-gold">Nyadeje</span>
+                    </h2>
+                    <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
+                    <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                        In 2023, she fell sick and later in the year 2024 she was diagnosed with cancer stage 4. While battling cancer, she was taking care of 4 of her step-sister's grandchildren after their mother died of HIV related complications.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        She breathed her last breath on <strong class="text-natural-900 font-normal">13/12/2025</strong>, and the children were left without anyone to support their education — prompting me to stand in for them.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        Nyadeje Hope Foundation is more than an organization — it is a promise to continue the work of a woman who sold illicit brew (changaa), cassava, and maize from her shamba just to ensure that a child would go to school. Her love knew no bounds.
+                    </p>
+                    <div class="mt-8 p-5 bg-white border border-gold/20 rounded-sm">
+                        <p class="font-serif italic text-natural-900 leading-relaxed">
+                            "She gave everything she had — every last shilling, every last grain — just so a child could have a chance. This foundation is her legacy living on."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="scroll-animate-right img-hover rounded-sm overflow-hidden order-1 lg:order-2">
+                    <img src="https://picsum.photos/seed/african-grandmother-love/800/1000.jpg" alt="In memory of Nyadeje" class="w-full h-[450px] lg:h-[580px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 bg-natural-900">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <div class="scroll-animate-left">
+                    <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Get in Touch</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight text-white">
+                        Let's Connect & <span class="italic text-gold-light">Partner</span>
+                    </h2>
+                    <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
+                    <p class="mt-6 text-white/50 font-light leading-relaxed">
+                        For anyone who wishes to be a partner with us, they can reach out through our number or email. Whether you want to donate, volunteer, partner, or simply learn more — we'd love to hear from you.
+                    </p>
+
+                    <div class="mt-10 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="ph:phone-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Phone</span>
+                                <a href="tel:0725435344" class="text-white hover:text-gold transition-colors duration-300 mt-1 block">0725 435 344</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="ph:bank-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Equity Bank</span>
+                                <span class="text-white mt-1 block">A/C No: 1040197512071</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Location</span>
+                                <span class="text-white mt-1 block">Siaya County, Kenya</span>
+                                <span class="text-white/50 text-sm block">Rarieda • Bondo • Ugenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-animate-right">
+                    <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">First Name</label>
+                                <input type="text" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Agnes">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Last Name</label>
+                                <input type="text" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Okuom">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Email Address</label>
+                            <input type="email" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Phone Number</label>
+                            <input type="tel" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="+254 7XX XXX XXX">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">I'd Like To...</label>
+                            <select required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 appearance-none cursor-pointer">
+                                <option value="" class="bg-natural-900">Select an option</option>
+                                <option value="donate" class="bg-natural-900">Make a Donation</option>
+                                <option value="volunteer" class="bg-natural-900">Volunteer</option>
+                                <option value="partner" class="bg-natural-900">Become a Partner</option>
+                                <option value="material" class="bg-natural-900">Donate Materials</option>
+                                <option value="info" class="bg-natural-900">Get More Information</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20 resize-none" placeholder="Tell us how you'd like to help..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <iconify-icon icon="ph:arrow-right-bold" class="text-sm"></iconify-icon>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-natural-900 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div class="lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center">
+                            <iconify-icon icon="ph:heart-bold" class="text-lg text-gold"></iconify-icon>
+                        </div>
+                        <div>
+                            <span class="text-white font-serif text-base tracking-tight">Nyadeje</span>
+                            <span class="block text-[9px] uppercase tracking-[0.2em] text-white/40">Hope Foundation</span>
+                        </div>
+                    </div>
+                    <p class="text-white/40 text-sm font-light leading-relaxed">
+                        Putting God's love into action by supporting vulnerable children in Siaya County, Kenya.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Quick Links</h5>
+                    <div class="space-y-3">
+                        <a href="#about" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">About Us</a>
+                        <a href="#story" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Our Story</a>
+                        <a href="#programs" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Programs</a>
+                        <a href="#donate" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Donate</a>
+                        <a href="#contact" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Programs</h5>
+                    <div class="space-y-3">
+                        <span class="block text-sm text-white/40">Education Support</span>
+                        <span class="block text-sm text-white/40">Rights Awareness</span>
+                        <span class="block text-sm text-white/40">Talent Development</span>
+                        <span class="block text-sm text-white/40">Parent Forums</span>
+                        <span class="block text-sm text-white/40">Dignity & Self-Esteem</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Donate</h5>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">M-Pesa</span>
+                            <p class="text-white text-sm font-normal mt-1">0725 435 344</p>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">Equity Bank</span>
+                            <p class="text-white text-sm font-normal mt-1">1040197512071</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/30 text-xs font-light">
+                    &copy; 2025 Nyadeje Hope Foundation. All rights reserved.
+                </p>
+                <p class="text-white/20 text-xs font-light italic font-serif">
+                    "Every child deserves hope"
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-natural-900 text-white px-6 py-4 rounded-sm shadow-2xl flex items-center gap-3 border border-gold/20">
+        <iconify-icon icon="ph:check-circle-bold" class="text-gold text-lg"></iconify-icon>
+        <span id="toastMessage" class="text-sm font-light">Copied to clipboard!</span>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="window.scrollTo({top:0})" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-gold text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-gold-dark">
+        <iconify-icon icon="ph:arrow-up-bold" class="text-lg"></iconify-icon>
+    </button>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.getElementById('menuBtn');
+            menu.classList.toggle('hidden');
+            const isOpen = !menu.classList.contains('hidden');
+            btn.innerHTML = isOpen 
+                ? '<iconify-icon icon="ph:x-bold" class="text-2xl"></iconify-icon>'
+                : '<iconify-icon icon="ph:list-bold" class="text-2xl"></iconify-icon>';
+        }
+
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.boxShadow = '0 1px 2px 0 rgba(0,0,0,0.05)';
+                navbar.querySelectorAll('a:not(.bg-gold)').forEach(link => {
+                    if (link.closest('#mobileMenu')) return;
+                    link.classList.remove('text-white/80');
+                    link.classList.add('text-natural-900/70');
+                });
+                const logoText = navbar.querySelector('a[href="#hero"] span:first-child');
+                const logoSub = navbar.querySelector('a[href="#hero"] span:last-child');
+                if (logoText) { logoText.classList.remove('text-white'); logoText.classList.add('text-natural-900'); }
+                if (logoSub) { logoSub.classList.remove('text-white/60'); logoSub.classList.add('text-natural-900/40'); }
+                const logoCircle = navbar.querySelector('a[href="#hero"] div:first-child');
+                if (logoCircle) { logoCircle.style.background = 'rgba(197,160,89,0.1)'; logoCircle.classList.remove('border-white/30'); logoCircle.classList.add('border-gold/30'); }
+                const menuBtn = document.getElementById('menuBtn');
+                if (menuBtn) { menuBtn.classList.remove('text-white'); menuBtn.classList.add('text-natural-900'); }
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.0)';
+                navbar.style.boxShadow = 'none';
+                navbar.querySelectorAll('a:not(.bg-gold)').forEach(link => {
+                    if (link.closest('#mobileMenu')) return;
+                    link.classList.add('text-white/80');
+                    link.classList.remove('text-natural-900/70');
+                });
+                const logoText = navbar.querySelector('a[href="#hero"] span:first-child');
+                const logoSub = navbar.querySelector('a[href="#hero"] span:last-child');
+                if (logoText) { logoText.classList.add('text-white'); logoText.classList.remove('text-natural-900'); }
+                if (logoSub) { logoSub.classList.add('text-white/60'); logoSub.classList.remove('text-natural-900/40'); }
+                const logoCircle = navbar.querySelector('a[href="#hero"] div:first-child');
+                if (logoCircle) { logoCircle.style.background = 'rgba(255,255,255,0.1)'; logoCircle.classList.add('border-white/30'); logoCircle.classList.remove('border-gold/30'); }
+                const menuBtn = document.getElementById('menuBtn');
+                if (menuBtn) { menuBtn.classList.add('text-white'); menuBtn.classList.remove('text-natural-900'); }
+            }
+
+            const backBtn = document.getElementById('backToTop');
+            if (currentScroll > 600) {
+                backBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backBtn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backBtn.classList.add('opacity-0', 'pointer-events-none');
+                backBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard: ' + text);
+                if (btnElement) {
+                    const originalHTML = btnElement.innerHTML;
+                    btnElement.innerHTML = '<iconify-icon icon="ph:check-bold" class="text-xs"></iconify-icon> Copied!';
+                    setTimeout(() => { btnElement.innerHTML = originalHTML; }, 2000);
+                }
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Copied to clipboard: ' + text);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            showToast('Thank you for reaching out! We will get back to you soon.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
