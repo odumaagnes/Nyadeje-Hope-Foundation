@@ -34,7 +34,7 @@
             100% { opacity: 1; transform: translateX(0); }
         }
         @keyframes fadeinRight {
-            0% { opacity: 0; transform: translateX(30px); }
+            0% { opacity: 0; transform: translateX(-30px); }
             100% { opacity: 1; transform: translateX(0); }
         }
         @keyframes scaleIn {
@@ -49,12 +49,21 @@
             0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4); }
             50% { box-shadow: 0 0 0 12px rgba(197, 160, 89, 0); }
         }
+        @keyframes whatsapp-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
         .animate-fadein { animation: fadein 1s ease-out forwards; }
         .animate-fadein-left { animation: fadeinLeft 1s ease-out forwards; }
         .animate-fadein-right { animation: fadeinRight 1s ease-out forwards; }
         .animate-scale-in { animation: scaleIn 0.8s ease-out forwards; }
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+        .animate-spin { animation: spin 1s linear infinite; }
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
@@ -87,6 +96,8 @@
         .objective-item { transition: all 0.4s ease; }
         .objective-item:hover { background: rgba(197,160,89,0.03); }
         .objective-item:hover .obj-number { background: #C5A059; color: #fff; }
+        .whatsapp-float { animation: whatsapp-pulse 2s infinite; }
+        .whatsapp-float:hover { animation: none; transform: scale(1.1); }
     </style>
 </head>
 <body class="bg-white text-natural-900 font-light">
@@ -345,7 +356,7 @@
         </div>
     </section>
 
-    <!-- Objectives Section (NEW) -->
+    <!-- Objectives Section -->
     <section id="objectives" class="py-24 md:py-32 bg-natural-50">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="text-center max-w-3xl mx-auto scroll-animate">
@@ -782,6 +793,9 @@
                         <button onclick="copyToClipboard('0725435344', this)" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-white/10 transition-colors duration-300 rounded-sm">
                             <iconify-icon icon="ph:copy"></iconify-icon> Copy M-Pesa Number
                         </button>
+                        <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20support%20your%20work." target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-[#20BD5A] transition-colors duration-300 rounded-sm">
+                            <iconify-icon icon="logos:whatsapp-icon"></iconify-icon> WhatsApp Us
+                        </a>
                     </div>
                 </div>
             </div>
@@ -846,6 +860,24 @@
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-[#25D366]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="logos:whatsapp-icon" class="text-lg"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">WhatsApp</span>
+                                <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20get%20in%20touch." target="_blank" class="text-white hover:text-[#25D366] transition-colors duration-300 mt-1 block">Chat with us on WhatsApp</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <iconify-icon icon="ph:envelope-bold" class="text-gold"></iconify-icon>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Email</span>
+                                <a href="mailto:odumaagnes3@gmail.com" class="text-white hover:text-gold transition-colors duration-300 mt-1 block">odumaagnes3@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <iconify-icon icon="ph:bank-bold" class="text-gold"></iconify-icon>
                             </div>
@@ -868,45 +900,55 @@
                 </div>
 
                 <div class="scroll-animate-right">
-                    <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
+                    <form id="contactForm" action="https://formspree.io/f/xwpkvqwp" method="POST" class="space-y-5">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="hidden" name="_replyto" value="">
+
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">First Name</label>
-                                <input type="text" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Agnes">
+                                <input type="text" name="first_name" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Agnes">
                             </div>
                             <div>
                                 <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Last Name</label>
-                                <input type="text" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Okuom">
+                                <input type="text" name="last_name" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Okuom">
                             </div>
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Email Address</label>
-                            <input type="email" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="you@example.com">
+                            <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="you@example.com">
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Phone Number</label>
-                            <input type="tel" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="+254 7XX XXX XXX">
+                            <input type="tel" name="phone" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="+254 7XX XXX XXX">
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">I'd Like To...</label>
-                            <select required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 appearance-none cursor-pointer">
+                            <select name="interest" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 appearance-none cursor-pointer">
                                 <option value="" class="bg-natural-900">Select an option</option>
-                                <option value="donate" class="bg-natural-900">Make a Donation</option>
-                                <option value="volunteer" class="bg-natural-900">Volunteer</option>
-                                <option value="partner" class="bg-natural-900">Become a Partner</option>
-                                <option value="material" class="bg-natural-900">Donate Materials</option>
-                                <option value="info" class="bg-natural-900">Get More Information</option>
+                                <option value="Make a Donation" class="bg-natural-900">Make a Donation</option>
+                                <option value="Volunteer" class="bg-natural-900">Volunteer</option>
+                                <option value="Become a Partner" class="bg-natural-900">Become a Partner</option>
+                                <option value="Donate Materials" class="bg-natural-900">Donate Materials</option>
+                                <option value="Get More Information" class="bg-natural-900">Get More Information</option>
                             </select>
                         </div>
                         <div>
                             <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Message</label>
-                            <textarea rows="4" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20 resize-none" placeholder="Tell us how you'd like to help..."></textarea>
+                            <textarea rows="4" name="message" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20 resize-none" placeholder="Tell us how you'd like to help..."></textarea>
                         </div>
-                        <button type="submit" class="w-full px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm flex items-center justify-center gap-2">
-                            <span>Send Message</span>
-                            <iconify-icon icon="ph:arrow-right-bold" class="text-sm"></iconify-icon>
+                        <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm flex items-center justify-center gap-2">
+                            <span id="submitText">Send Message</span>
+                            <iconify-icon icon="ph:arrow-right-bold" class="text-sm" id="submitIcon"></iconify-icon>
                         </button>
                     </form>
+
+                    <div class="mt-5 text-center">
+                        <span class="text-white/20 text-xs">or reach out directly</span>
+                        <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20get%20in%20touch%20about%20your%20programs." target="_blank" class="inline-flex items-center gap-2 mt-2 text-[#25D366] hover:text-[#20BD5A] text-xs uppercase tracking-wider transition-colors">
+                            <iconify-icon icon="logos:whatsapp-icon" class="text-base"></iconify-icon> Send a WhatsApp Message
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -929,6 +971,11 @@
                     <p class="text-white/40 text-sm font-light leading-relaxed">
                         Putting God's love into action by supporting vulnerable children in Siaya County, Kenya.
                     </p>
+                    <div class="mt-5 flex items-center gap-3">
+                        <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300"><iconify-icon icon="logos:whatsapp-icon" class="text-base"></iconify-icon></a>
+                        <a href="mailto:odumaagnes3@gmail.com" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300"><iconify-icon icon="ph:envelope-bold" class="text-sm text-white/60"></iconify-icon></a>
+                        <a href="tel:0725435344" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300"><iconify-icon icon="ph:phone-bold" class="text-sm text-white/60"></iconify-icon></a>
+                    </div>
                 </div>
 
                 <div>
@@ -964,6 +1011,10 @@
                             <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">Equity Bank</span>
                             <p class="text-white text-sm font-normal mt-1">1040197512071</p>
                         </div>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">Email</span>
+                            <p class="text-white text-sm font-normal mt-1">odumaagnes3@gmail.com</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -980,15 +1031,20 @@
     </footer>
 
     <!-- Toast Notification -->
-    <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-natural-900 text-white px-6 py-4 rounded-sm shadow-2xl flex items-center gap-3 border border-gold/20">
-        <iconify-icon icon="ph:check-circle-bold" class="text-gold text-lg"></iconify-icon>
+    <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-natural-900 text-white px-6 py-4 rounded-sm shadow-2xl flex items-center gap-3 border border-gold/20">
+        <iconify-icon icon="ph:check-circle-bold" class="text-gold text-lg" id="toastIcon"></iconify-icon>
         <span id="toastMessage" class="text-sm font-light">Copied to clipboard!</span>
     </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" onclick="window.scrollTo({top:0})" class="fixed bottom-6 right-6 z-40 w-12 h-12 bg-gold text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-gold-dark">
+    <button id="backToTop" onclick="window.scrollTo({top:0})" class="fixed bottom-24 right-6 z-40 w-12 h-12 bg-natural-900 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-gold border border-white/10">
         <iconify-icon icon="ph:arrow-up-bold" class="text-lg"></iconify-icon>
     </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20work." target="_blank" class="whatsapp-float fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:bg-[#20BD5A] transition-all duration-300" title="Chat on WhatsApp">
+        <iconify-icon icon="logos:whatsapp-icon" class="text-2xl"></iconify-icon>
+    </a>
 
     <script>
         function toggleMenu() {
@@ -1073,7 +1129,7 @@
 
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
-                showToast('Copied to clipboard: ' + text);
+                showToast('Copied to clipboard: ' + text, 'check');
                 if (btnElement) {
                     const originalHTML = btnElement.innerHTML;
                     btnElement.innerHTML = '<iconify-icon icon="ph:check-bold" class="text-xs"></iconify-icon> Copied!';
@@ -1086,23 +1142,57 @@
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                showToast('Copied to clipboard: ' + text);
+                showToast('Copied to clipboard: ' + text, 'check');
             });
         }
 
-        function showToast(message) {
+        function showToast(message, type) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
             toastMsg.textContent = message;
+            toastIcon.setAttribute('icon', type === 'check' ? 'ph:check-circle-bold' : type === 'error' ? 'ph:x-circle-bold' : 'ph:info-bold');
             toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+            setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
 
-        function handleSubmit(e) {
+        // Formspree submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            showToast('Thank you for reaching out! We will get back to you soon.');
-            e.target.reset();
-        }
+            const form = this;
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('submitText');
+            const btnIcon = document.getElementById('submitIcon');
+
+            form.querySelector('input[name="_replyto"]').value = form.querySelector('input[name="email"]').value;
+
+            btn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.setAttribute('icon', 'ph:spinner');
+            btnIcon.classList.add('animate-spin');
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    showToast('Message sent successfully! We will get back to you soon.', 'check');
+                    form.reset();
+                } else {
+                    showToast('Something went wrong. Please try WhatsApp instead.', 'error');
+                }
+            } catch (error) {
+                showToast('Connection error. Please try WhatsApp instead.', 'error');
+            }
+
+            btn.disabled = false;
+            btnText.textContent = 'Send Message';
+            btnIcon.setAttribute('icon', 'ph:arrow-right-bold');
+            btnIcon.classList.remove('animate-spin');
+        });
     </script>
 </body>
 </html>
