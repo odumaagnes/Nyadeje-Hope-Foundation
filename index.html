@@ -98,30 +98,72 @@
         .objective-item:hover .obj-number { background: #C5A059; color: #fff; }
         .whatsapp-float { animation: whatsapp-pulse 2s infinite; }
         .whatsapp-float:hover { animation: none; transform: scale(1.1); }
+        .passport-frame {
+            border: 3px solid rgba(197,160,89,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08), inset 0 0 0 6px white, inset 0 0 0 7px rgba(197,160,89,0.15);
+            transition: all 0.5s ease;
+        }
+        .gallery-filter-btn { transition: all 0.3s ease; }
+        .gallery-filter-btn.active { background: #C5A059; color: #fff; border-color: #C5A059; }
+        .gallery-item { transition: all 0.5s ease; }
+        .gallery-item.hidden-item { opacity: 0; transform: scale(0.8); position: absolute; pointer-events: none; }
+        .gallery-item.visible-item { opacity: 1; transform: scale(1); position: relative; pointer-events: auto; }
+        .gallery-thumb { overflow: hidden; cursor: pointer; }
+        .gallery-thumb img { transition: all 0.6s ease; filter: grayscale(10%); }
+        .gallery-thumb:hover img { transform: scale(1.05); filter: grayscale(0); }
+        .gallery-thumb .thumb-overlay { opacity: 0; transition: all 0.4s ease; }
+        .gallery-thumb:hover .thumb-overlay { opacity: 1; }
+        .lightbox { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .lightbox.active { opacity: 1; pointer-events: auto; }
+        .lightbox.active .lightbox-content { transform: scale(1); }
+        .lightbox-content { transform: scale(0.95); transition: transform 0.3s ease; }
+        .video-play-btn { transition: all 0.3s ease; }
+        .gallery-thumb:hover .video-play-btn { transform: scale(1.1); }
+
+        .passport-frame:hover {
+            border-color: rgba(197,160,89,0.5);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12), inset 0 0 0 6px white, inset 0 0 0 7px rgba(197,160,89,0.3);
+            transform: translateY(-2px);
+        }
+        .passport-placeholder {
+            background: linear-gradient(135deg, #f5f0e8 0%, #ebe4d6 50%, #f5f0e8 100%);
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .founder-badge {
+            background: linear-gradient(135deg, rgba(197,160,89,0.08) 0%, rgba(197,160,89,0.03) 100%);
+            border: 1px solid rgba(197,160,89,0.15);
+        }
     </style>
 </head>
 <body class="bg-white text-natural-900 font-light">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-500" style="background: rgba(255,255,255,0.0);">
-        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 h-24 flex items-center justify-between">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-500" style="background: rgba(255,255,255,0.0); font-weight: bold;">
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8 h-24 flex items-center justify-between bg-green-400" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
             <a href="#hero" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:border-gold/60 transition-colors duration-300" style="background: rgba(255,255,255,0.1);">
-                    <iconify-icon icon="ph:heart-bold" class="text-xl text-gold"></iconify-icon>
+                <div class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center group-hover:border-gold/60 transition-colors duration-300 bg-black">
+                    <iconify-icon icon="ph:heart-bold" class="text-xl text-green-400"></iconify-icon>
                 </div>
                 <div>
                     <span class="text-white font-serif text-lg tracking-tight">Nyadeje</span>
-                    <span class="block text-[10px] uppercase tracking-[0.2em] text-white/60">Hope Foundation</span>
+                    <span class="block text-[10px] uppercase tracking-tight text-white italic">Hope Foundation</span>
                 </div>
             </a>
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="#about" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">About</a>
-                <a href="#story" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Our Story</a>
-                <a href="#impact" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Impact</a>
-                <a href="#programs" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Programs</a>
-                <a href="#donate" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Donate</a>
-                <a href="#contact" class="text-xs uppercase tracking-[0.15em] text-white/80 hover:text-gold transition-colors duration-300 nav-link">Contact</a>
-                <a href="#donate" class="ml-4 px-6 py-3 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">Support Us</a>
+            <div class="hidden lg:flex items-center gap-5" style="color: white">
+                <a href="#about" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">About</a>
+                <a href="#story" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Our Story</a>
+                <a href="#impact" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Impact</a>
+                <a href="#programs" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Programs</a>
+                <a href="#gallery" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Gallery</a>
+                <a href="#donate" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Donate</a>
+                <a href="#contact" class="text-xs uppercase tracking-[0.15em] text-white/80 bg-black p-3 border border-black/40 rounded-lg hover:text-gold transition-colors duration-300 nav-link" style="color: white">Contact</a>
+                <a href="#donate" class="ml-4 px-6 py-3 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 bg-black p-3 border border-black/40 rounded-lg" style="color: white; font-weight: bold;">Support Us</a>
             </div>
             <button id="menuBtn" class="lg:hidden text-white" onclick="toggleMenu()">
                 <iconify-icon icon="ph:list-bold" class="text-2xl"></iconify-icon>
@@ -133,6 +175,7 @@
                 <a href="#story" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Our Story</a>
                 <a href="#impact" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Impact</a>
                 <a href="#programs" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Programs</a>
+                <a href="#gallery" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Gallery</a>
                 <a href="#donate" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Donate</a>
                 <a href="#contact" onclick="toggleMenu()" class="text-xs uppercase tracking-[0.15em] text-natural-900 hover:text-gold py-2">Contact</a>
                 <a href="#donate" onclick="toggleMenu()" class="mt-2 px-6 py-3 bg-gold text-white text-xs uppercase tracking-[0.15em] text-center font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">Support Us</a>
@@ -140,9 +183,10 @@
         </div>
     </nav>
 
+
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <img src="https://picsum.photos/seed/kenya-children-hope/1920/1080.jpg" alt="Children of Siaya County" class="absolute inset-0 w-full h-full object-cover" style="filter: brightness(0.7);">
+        <img src="imagee1.jpeg" alt="Children of Siaya County" class="absolute inset-0 w-full h-100 object-cover" style="filter: brightness(0.7);">
         <div class="hero-overlay absolute inset-0"></div>
         <div class="absolute top-1/4 left-8 w-24 h-24 border border-gold/20 rounded-full animate-float opacity-0-init animate-fadein delay-500"></div>
         <div class="absolute bottom-1/3 right-12 w-16 h-16 border border-gold/15 rounded-full animate-float opacity-0-init animate-fadein delay-600" style="animation-delay: 1.5s;"></div>
@@ -155,11 +199,11 @@
                 <span class="italic text-gold-light">Deserves Hope</span>
             </h1>
             <p class="mt-6 md:mt-8 text-white/70 font-light text-base md:text-lg max-w-2xl mx-auto leading-relaxed opacity-0-init animate-fadein delay-300">
-                Nyadeje Hope Foundation supports needy children through education, psychological support, and talent development — advocating for the rights of the most vulnerable in Siaya County.
+                Nyadeje Hope Foundation is more than an organization — it is a movement of compassion, a voice to the voiceless, and a continuation of a legacy built on sacrifice, faith and humanity.
             </p>
             <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center opacity-0-init animate-fadein delay-400">
-                <a href="#donate" class="px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm animate-pulse-gold">Donate Now</a>
-                <a href="#about" class="px-8 py-4 border border-white/30 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-white/10 transition-colors duration-300 rounded-sm" style="backdrop-filter: blur(4px);">Learn Our Story</a>
+                <a href="#donate" class="px-8 py-4 bg-green-400 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm animate-pulse-gold">Donate Now</a>
+                <a href="#about" class="px-8 py-4 bg-green-400 border border-white/30 text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold transition-colors duration-300 rounded-sm" style="backdrop-filter: blur(4px);">Learn Our Story</a>
             </div>
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0-init animate-fadein delay-600">
                 <a href="#about" class="flex flex-col items-center gap-2 text-white/40 hover:text-gold transition-colors duration-300">
@@ -176,62 +220,63 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
                 <div class="scroll-animate">
                     <div class="stat-number font-serif text-3xl md:text-4xl font-normal">30+</div>
-                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Years of Service</div>
+                    <div class="text-white text-[10px] uppercase tracking-[0.2em] mt-2">Years of Service</div>
                 </div>
                 <div class="scroll-animate" style="transition-delay: 0.1s;">
                     <div class="stat-number font-serif text-3xl md:text-4xl font-normal">100+</div>
-                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Pupils Supported</div>
+                    <div class="text-white text-[10px] uppercase tracking-[0.2em] mt-2">Pupils Supported</div>
                 </div>
                 <div class="scroll-animate" style="transition-delay: 0.2s;">
-                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">3</div>
-                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Sub-Counties Served</div>
+                    <div class="stat-number font-serif text-3xl md:text-4xl font-normal">20+</div>
+                    <div class="text-white text-[10px] uppercase tracking-[0.2em] mt-2">Secondary Students</div>
                 </div>
                 <div class="scroll-animate" style="transition-delay: 0.3s;">
                     <div class="stat-number font-serif text-3xl md:text-4xl font-normal">6</div>
-                    <div class="text-white/50 text-[10px] uppercase tracking-[0.2em] mt-2">Categories of Need</div>
+                    <div class="text-white text-[10px] uppercase tracking-[0.2em] mt-2">Categories of Need</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section — FULL STORY -->
+    <!-- About Section — FULL STORY with Founder Passport -->
     <section id="about" class="py-24 md:py-32 bg-white">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-                <div class="scroll-animate-left img-hover rounded-sm overflow-hidden lg:sticky lg:top-28">
-                    <img src="https://picsum.photos/seed/african-mother-hope/800/1000.jpg" alt="Agnes - Founder" class="w-full h-[500px] lg:h-[600px] object-cover">
+                <div class="scroll-animate-left lg:sticky lg:top-28">
+                    
+
+                    <!-- Larger contextual image below passport -->
+                    <div class="mt-6 img-hover rounded-sm overflow-hidden">
+                        <img src="imagee5.jpeg" alt="Community work in Siaya County" class="w-full h-[550px] object-cover">
+                    </div>
                 </div>
 
                 <div class="scroll-animate-right">
                     <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">About Us</span>
                     <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
-                        A Legacy of <span class="italic text-gold">Love & Service</span>
+                        A Legacy of <span class="italic text-gold">Hopes, Compassion & Transformation</span>
                     </h2>
                     <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
 
                     <p class="mt-6 text-gray-500 font-light leading-relaxed">
-                        My name is Agnes Oduma, I am a widow and a mother of 3 children, whom I had raised single-handedly and with a lot of challenges that prompted me to start Nyadeje Hope Foundation to support needy children and advocate for their rights in Siaya County.
+                        Nyadeje Hope Foundation was born from a deeply passionate journey of pain, resilience, love and compassion for vulnerable children in the society. The foundation was established by <strong class="text-natural-900 font-normal">Agnes Oduma</strong> — a widow, mother and social worker with over 30 years of working experience with vulnerable children and families in various Counties in Kenya.
                     </p>
 
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        My late mother <strong class="text-natural-900 font-normal">Jane Aoko Okuom</strong> was called <em>Nyadeje</em>, a name given due to her place of birth according to Luo culture. Nyadeje lived her life helping needy children, especially orphans and the less privileged within her community. She ensured that no child brought to her attention missed school due to a lack of uniform or school fees. She sold illicit brew (changaa), cassava, and maize from her shamba just to ensure that a child would go to school. Her great love and devotion to serve children spurred me to work very hard in my life, which enabled me to join the social work field.
+                        Growing up in a difficult environment after her parents separated, Agnes experienced firsthand the struggles that many children silently endure today — <strong class="text-natural-900 font-normal">poverty, emotional trauma, neglect and vulnerability to abuse</strong>. These painful experiences shaped her understanding of the challenges facing disadvantaged children and ignited a lifelong passion to protect, support and advocate for their rights.
                     </p>
 
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        In 2023, she fell sick and later in the year 2024 she was diagnosed with cancer stage 4. While battling cancer, she was taking care of 4 of her step-sister's grandchildren after their mother died of HIV related complications. She breathed her last breath on 13/12/2025, and the children were left without anyone to support their education. Hence prompting me to stand in for them.
+                        The foundation draws its name and inspiration from Agnes' late mother, <strong class="text-natural-900 font-normal">Jane Aoko Okuom</strong>, lovingly known as <em>Nyadeje</em> according to Luo cultural tradition. Nyadeje was a woman whose life was defined by sacrifice and compassion. Despite having little, she dedicated her life to helping orphans, needy children and struggling families within her communities. She sold local brew, cassava, maize and millet from her small farm just to ensure that children could attend school, have uniforms or receive basic needs. To her, no child deserved to be denied education because of poverty.
                     </p>
 
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        Having vast experience in the social work-related field which had motivated me to start this foundation, I have been working with vulnerable children for over 30 years, and my dream was to start a project that would transform the lives of children who have an inadequate support system that could hinder them from achieving their dreams and also become a voice to the voiceless.
-                    </p>
-
-                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        My childhood was full of challenges, given that my parents had separated. I became vulnerable and hence subjecting myself to all forms of abuse, at a time I thought of committing suicide due to the trauma that I had but by the grace of God I survived the ordeal and today I am advocating for the rights of children.
+                        While battling cancer stage 4, she continued to care for the vulnerable — including her step sister's grandchildren who had been orphaned after losing their mother to HIV-related complications. Her strength, selflessness and dedication to humanity remained unshaken until she passed on <strong class="text-natural-900 font-normal">13th December 2024</strong>. Her unwavering love for children became the foundation upon which Nyadeje Hope Foundation was built.
                     </p>
 
                     <div class="mt-8 p-6 bg-natural-50 border-l-2 border-gold rounded-r-sm">
                         <p class="font-serif italic text-natural-900 leading-relaxed">
-                            "I survived what many children are going through today. That survival gave me a calling — to be the voice of the voiceless, to stand where no one else would stand, and to ensure that no child in Siaya County is left behind."
+                            "Every child deserves a chance to dream, to learn and become who God created them to be. Our mission is to stand beside the vulnerable and remind them that they are not forgotten."
                         </p>
                         <span class="block mt-3 text-[11px] uppercase tracking-[0.15em] text-gold">— Agnes Oduma, Founder</span>
                     </div>
@@ -258,29 +303,29 @@
 
             <div class="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-2 scroll-animate-left img-hover rounded-sm overflow-hidden">
-                    <img src="https://picsum.photos/seed/school-gate-children/700/900.jpg" alt="Joseph's story" class="w-full h-[400px] lg:h-[500px] object-cover">
+                    <img src="https://picsum.photos/seed/school-gate-children/700/900.jpg" alt="The moment that sparked it all" class="w-full h-[400px] lg:h-[500px] object-cover">
                 </div>
 
                 <div class="lg:col-span-3 scroll-animate-right">
                     <p class="text-gray-500 font-light leading-relaxed text-lg">
-                        This foundation was established when I took my daughter to a new school called <strong class="text-natural-900 font-normal">Kawuondi Primary School</strong>. At the gate, I found Joseph, a 7-year-old boy sitting outside.
+                        Nyadeje Hope Foundation was officially inspired into action after Agnes encountered a young boy sitting outside a school gate — he had been sent home over unpaid school fees.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        Upon asking why he was not in school, he told me that his school fees had not been paid. He went home, but his mother insisted that he go back to school, without money. The boy was an orphan — his father died when he was 1 year old, and his mother had four other siblings that she was taking care of. Joseph had a torn uniform and shoes.
+                        The child had torn uniforms and lacked the basic necessities to learn with dignity. That moment revealed a painful reality affecting many children across Siaya County — <strong class="text-natural-900 font-normal">children missing education not because they lack intelligence or dreams, but simply because they lack support</strong>.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        I eventually paid his fee, but I was not able to buy uniforms due to financial constraints I was facing as a result of losing my job in the month of December 2025.
+                        Upon asking why he was not in school, the boy explained that his school fees had not been paid. He went home, but his mother insisted that he go back to school — without money. The boy was an orphan; his father had died when he was barely a year old, and his mother had four other siblings to care for. He had a torn uniform and worn-out shoes.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        I visited other primary schools around my village and found out that the problems affecting needy children were the same and most of them did not have good school uniforms, bags and shoes. Some children are walking barefoot while going to school because their guardians or parents cannot afford to buy shoes, and paying school fees is a problem too.
+                        Visits to other primary schools around the village confirmed that the problems affecting needy children were the same — most lacked good school uniforms, bags and shoes. Some children walk barefoot to school because their guardians or parents cannot afford to buy shoes, and paying school fees remains an enormous challenge.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        These have affected their learning in a negative way — sometimes they miss school, which has contributed to a great drop in academic performance. Those who have torn uniforms, especially girls, have had their self-esteem affected.
+                        These conditions have affected their learning in a negative way — sometimes they miss school entirely, which has contributed to a great drop in academic performance. Those who have torn uniforms, especially girls, have had their self-esteem deeply affected.
                     </p>
 
                     <div class="mt-8 p-6 bg-white border-l-2 border-gold rounded-r-sm">
                         <p class="font-serif italic text-natural-900 leading-relaxed">
-                            "My childhood was full of challenges. I became vulnerable and hence subjecting myself to all forms of abuse. At one time, I thought of committing suicide due to the trauma — but by the grace of God I survived. Today, I am advocating for the rights of children."
+                            "I survived what many children are going through today — poverty, emotional trauma, neglect and vulnerability to abuse. That survival gave me a calling — to be the voice of the voiceless, to stand where no one else would stand, and to ensure that no child in Siaya County is left behind."
                         </p>
                         <span class="block mt-3 text-[11px] uppercase tracking-[0.15em] text-gold">— Agnes Oduma, Founder</span>
                     </div>
@@ -337,17 +382,17 @@
                     </div>
                     <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
                         <iconify-icon icon="ph:heart-bold" class="text-2xl text-gold mb-3"></iconify-icon>
-                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Best Interest of Child</span>
+                        <span class="text-[11px] uppercase tracking-[0.1em] text-natural-900 font-normal leading-tight">Best Interest of the Child</span>
                     </div>
                     <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
                         <iconify-icon icon="ph:cross-bold" class="text-2xl text-gold mb-3"></iconify-icon>
                         <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Christ Centered</span>
                     </div>
-                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
-                        <iconify-icon icon="ph:shield-check-bold" class="text-2xl text-gold mb-3"></iconify-icon>
-                        <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Transparency</span>
-                    </div>
                     <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default col-span-2 md:col-span-1">
+                        <iconify-icon icon="ph:shield-check-bold" class="text-2xl text-gold mb-3"></iconify-icon>
+                        <span class="text-[10px] uppercase tracking-[0.1em] text-natural-900 font-normal leading-tight">Responsive, Transparent & Accountable</span>
+                    </div>
+                    <div class="value-card text-center p-5 border border-black/5 rounded-sm cursor-default">
                         <iconify-icon icon="ph:plant-bold" class="text-2xl text-gold mb-3"></iconify-icon>
                         <span class="text-xs uppercase tracking-[0.1em] text-natural-900 font-normal">Sustainability</span>
                     </div>
@@ -371,7 +416,6 @@
             </div>
 
             <div class="mt-16 space-y-0">
-                <!-- Objective 1 -->
                 <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm">
                     <div class="md:col-span-1 flex-shrink-0">
                         <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
@@ -381,12 +425,11 @@
                     <div class="md:col-span-11">
                         <h4 class="font-serif text-xl md:text-2xl tracking-tight text-natural-900">Enhance Smooth Learning for Needy Pupils</h4>
                         <p class="mt-3 text-gray-500 font-light leading-relaxed max-w-3xl">
-                            Enhancing smooth learning for at least <strong class="text-natural-900 font-normal">100 needy children yearly in primary schools</strong> by buying uniforms, shoes, and school bags, and paying fees for at least <strong class="text-natural-900 font-normal">20 students yearly</strong> in various secondary schools — removing the barriers that keep children out of the classroom.
+                            Enhancing smooth learning for at least <strong class="text-natural-900 font-normal">100 needy pupils yearly</strong> by buying uniforms, shoes, and school bags, and paying fees for at least <strong class="text-natural-900 font-normal">20 students in various secondary schools yearly</strong> — removing the barriers that keep children out of the classroom.
                         </p>
                     </div>
                 </div>
 
-                <!-- Objective 2 -->
                 <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.1s;">
                     <div class="md:col-span-1 flex-shrink-0">
                         <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
@@ -401,7 +444,6 @@
                     </div>
                 </div>
 
-                <!-- Objective 3 -->
                 <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.2s;">
                     <div class="md:col-span-1 flex-shrink-0">
                         <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
@@ -416,7 +458,6 @@
                     </div>
                 </div>
 
-                <!-- Objective 4 -->
                 <div class="scroll-animate objective-item border-t border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.3s;">
                     <div class="md:col-span-1 flex-shrink-0">
                         <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
@@ -431,7 +472,6 @@
                     </div>
                 </div>
 
-                <!-- Objective 5 -->
                 <div class="scroll-animate objective-item border-t border-b border-black/10 py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start px-4 -mx-4 rounded-sm" style="transition-delay: 0.4s;">
                     <div class="md:col-span-1 flex-shrink-0">
                         <div class="obj-number w-12 h-12 rounded-full border-2 border-gold/30 flex items-center justify-center transition-all duration-400">
@@ -450,20 +490,23 @@
     </section>
 
     <!-- Who We Help -->
-    <section class="py-24 md:py-32 bg-natural-900 relative overflow-hidden">
+    <section class="py-24 md:py-32 relative overflow-hidden bg-natural-900">
         <div class="absolute inset-0 opacity-5">
             <div class="absolute top-20 left-20 w-40 h-40 border border-gold rounded-full"></div>
             <div class="absolute bottom-20 right-20 w-60 h-60 border border-gold rounded-full"></div>
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-gold rounded-full"></div>
         </div>
 
-        <div class="max-w-screen-xl mx-auto px-4 md:px-8 relative z-10">
+        <div class="max-w-screen-xl mx-auto md:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto scroll-animate">
                 <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Who We Help</span>
                 <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight text-white">
                     Children Who Need Us <span class="italic text-gold-light">Most</span>
                 </h2>
                 <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+                <p class="mt-4 text-white/40 font-light leading-relaxed text-sm">
+                    We believe that children deserve not only education but also love, protection, confidence and opportunity to discover their full potential — regardless of their background.
+                </p>
             </div>
 
             <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -473,7 +516,7 @@
                     </div>
                     <h4 class="text-white font-normal text-sm uppercase tracking-wide">Orphans & Vulnerable Children</h4>
                     <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
-                        Children whose parents died from HIV-related complications or other causes, left under the care of aging grandparents or relatives, whose socioeconomic status makes them vulnerable and open to exploitation and abuse.
+                        Children whose parents died from HIV-related complications or any other cause, left under the care of aging grandparents or relatives — whose socioeconomic status makes them vulnerable and open to exploitation and abuse.
                     </p>
                 </div>
 
@@ -483,7 +526,7 @@
                     </div>
                     <h4 class="text-white font-normal text-sm uppercase tracking-wide">Children of Substance Abuse</h4>
                     <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
-                        Children coming from an imbalanced family where alcohol and drug abuse have taken control of their parents' lives and due to addiction, children are left without proper care.
+                        Children coming from an imbalanced family where alcohol and drug abuse have taken control of their parents' lives — and due to addiction, children are left without proper care.
                     </p>
                 </div>
 
@@ -503,7 +546,7 @@
                     </div>
                     <h4 class="text-white font-normal text-sm uppercase tracking-wide">Single-Parent Households</h4>
                     <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
-                        Children who are from single parents due to separation or divorce and the parent who is left is unable to support them adequately — leaving gaps in both emotional and financial support.
+                        Children from single parents due to separation or divorce, where the parent left is unable to support them adequately — leaving gaps in both emotional and financial support.
                     </p>
                 </div>
 
@@ -513,7 +556,7 @@
                     </div>
                     <h4 class="text-white font-normal text-sm uppercase tracking-wide">Children with Special Needs</h4>
                     <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
-                        Children with special needs, including those with various forms of conditions such as autism, physical disability, and other challenges that require additional support, resources, and understanding.
+                        Children with special needs, including various forms of conditions such as autism, physical disability, and other challenges that require additional support, resources and understanding.
                     </p>
                 </div>
 
@@ -523,14 +566,14 @@
                     </div>
                     <h4 class="text-white font-normal text-sm uppercase tracking-wide">Abused or At-Risk Children</h4>
                     <p class="mt-3 text-white/50 font-light text-sm leading-relaxed">
-                        Children who are at risk of being abused or have been abused — needing protection, psychological support, safe spaces, and strong advocacy to ensure their rights are upheld.
+                        Children who are at risk of being abused or have been abused — needing protection, psychological support, safe spaces and strong advocacy to ensure their rights are upheld.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Programs / Objectives -->
+    <!-- Programs / What We Do -->
     <section id="programs" class="py-24 md:py-32 bg-white">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="text-center max-w-3xl mx-auto scroll-animate">
@@ -539,6 +582,9 @@
                     What We <span class="italic text-gold">Do</span>
                 </h2>
                 <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                    Today the foundation exists to restore hope, dignity and opportunity to vulnerable children through education support, psychological and emotional care, advocacy for their rights, and community empowerment programs.
+                </p>
             </div>
 
             <div class="mt-16 space-y-0">
@@ -564,15 +610,15 @@
                         <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">02</span>
                     </div>
                     <div class="md:col-span-4">
-                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Dignity & Self-Esteem</h4>
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Psychological & Emotional Care</h4>
                     </div>
                     <div class="md:col-span-5">
                         <p class="text-gray-500 font-light leading-relaxed">
-                            Creating a conducive environment that enables learners to have high self-esteem by ensuring they dress well while in school — restoring confidence and pride in their appearance.
+                            Providing psychological support and emotional care to children who have experienced trauma, neglect, or abuse — helping them heal and build resilience for the future.
                         </p>
                     </div>
                     <div class="md:col-span-2 flex justify-end">
-                        <iconify-icon icon="ph:star-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                        <iconify-icon icon="ph:heart-bold" class="text-3xl text-gold/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
                     </div>
                 </div>
 
@@ -581,7 +627,7 @@
                         <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">03</span>
                     </div>
                     <div class="md:col-span-4">
-                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Rights Awareness</h4>
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Rights Awareness & Advocacy</h4>
                     </div>
                     <div class="md:col-span-5">
                         <p class="text-gray-500 font-light leading-relaxed">
@@ -615,11 +661,11 @@
                         <span class="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">05</span>
                     </div>
                     <div class="md:col-span-4">
-                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Parent Engagement Forums</h4>
+                        <h4 class="font-serif text-xl md:text-2xl tracking-tight">Community Empowerment</h4>
                     </div>
                     <div class="md:col-span-5">
                         <p class="text-gray-500 font-light leading-relaxed">
-                            Organizing community forums where parents are trained and sensitized on good parenting, substance abuse, child abuse prevention, and health talks.
+                            Organizing parents' engagement forums in the community — training and sensitizing parents on good parenting, substance abuse, child abuse prevention, and health talks.
                         </p>
                     </div>
                     <div class="md:col-span-2 flex justify-end">
@@ -630,58 +676,292 @@
         </div>
     </section>
 
-    <!-- Location Section -->
+     <!-- Location Section -->
     <section class="py-24 md:py-32 bg-natural-50">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div class="scroll-animate-left">
                     <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Where We Work</span>
-                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
-                        Siaya County, <span class="italic text-gold">Kenya</span>
-                    </h2>
+                    <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">Siaya County, <span class="italic text-gold">Kenya</span></h2>
                     <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
-                    <p class="mt-6 text-gray-500 font-light leading-relaxed">
-                        Our foundation will be operating in Siaya County, working closely with schools, non-state actors in the area, and other government entities to identify and support the most vulnerable children in our community.
-                    </p>
-
+                    <p class="mt-6 text-gray-500 font-light leading-relaxed">Our foundation will be operating in Siaya County, working closely with schools, non-state actors in the area, and other government entities to identify and support the most vulnerable children in our community.</p>
                     <div class="mt-8 space-y-4">
-                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
-                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
-                            </div>
-                            <div>
-                                <span class="text-sm font-normal text-natural-900">Rarieda Sub-County</span>
-                                <p class="text-xs text-gray-400 mt-0.5">Primary area of operations</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
-                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
-                            </div>
-                            <div>
-                                <span class="text-sm font-normal text-natural-900">Bondo Sub-County</span>
-                                <p class="text-xs text-gray-400 mt-0.5">Expanding reach and impact</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5">
-                            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
-                            </div>
-                            <div>
-                                <span class="text-sm font-normal text-natural-900">Ugenya Sub-County</span>
-                                <p class="text-xs text-gray-400 mt-0.5">Growing our community presence</p>
-                            </div>
-                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5"><div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon></div><div><span class="text-sm font-normal text-natural-900">Rarieda Sub-County</span><p class="text-xs text-gray-400 mt-0.5">Primary area of operations</p></div></div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5"><div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon></div><div><span class="text-sm font-normal text-natural-900">Bondo Sub-County</span><p class="text-xs text-gray-400 mt-0.5">Expanding reach and impact</p></div></div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-sm border border-black/5"><div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0"><iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon></div><div><span class="text-sm font-normal text-natural-900">Ugenya Sub-County</span><p class="text-xs text-gray-400 mt-0.5">Growing our community presence</p></div></div>
                     </div>
                 </div>
-
                 <div class="scroll-animate-right img-hover rounded-sm overflow-hidden">
-                    <img src="https://picsum.photos/seed/kenya-landscape-rural/800/700.jpg" alt="Siaya County landscape" class="w-full h-[400px] lg:h-[550px] object-cover">
+                    <img src="imagee2.jpeg" alt="Siaya County landscape" class="w-full h-[400px] lg:h-[550px] object-cover">
                 </div>
             </div>
         </div>
     </section>
+    <section id="gallery" class="py-24 md:py-32 bg-white">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto scroll-animate">
+                <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Gallery</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight">
+                    Moments of <span class="italic text-gold">Impact</span>
+                </h2>
+                <div class="w-16 h-[1px] bg-gold/40 mt-6 mx-auto"></div>
+                <p class="mt-6 text-gray-500 font-light leading-relaxed">
+                    A visual journey through our programs, community outreach, and the lives we touch every day in Siaya County.
+                </p>
+            </div>
 
+            <!-- Filter Buttons -->
+            <!-- <div class="mt-12 flex flex-wrap items-center justify-center gap-3 scroll-animate">
+                <button onclick="filterGallery('all')" class="gallery-filter-btn active px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300">All</button>
+                <button onclick="filterGallery('education')" class="gallery-filter-btn px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300 text-gray-500">Education</button>
+                <button onclick="filterGallery('community')" class="gallery-filter-btn px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300 text-gray-500">Community</button>
+                <button onclick="filterGallery('donations')" class="gallery-filter-btn px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300 text-gray-500">Donations</button>
+                <button onclick="filterGallery('events')" class="gallery-filter-btn px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300 text-gray-500">Events</button>
+                <button onclick="filterGallery('videos')" class="gallery-filter-btn px-5 py-2.5 text-[11px] uppercase tracking-[0.15em] font-normal border border-black/10 rounded-sm hover:border-gold/40 transition-all duration-300 text-gray-500">Videos</button>
+            </div> -->
+
+            <!-- Gallery Grid -->
+            <!-- <div id="galleryGrid" class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                 Image 1 - Education
+                <div class="gallery-item visible-item" data-category="education">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/children-classroom-africa/800/600.jpg" alt="Children in classroom" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Education</span>
+                                <span class="text-white text-sm font-normal">Learning in Progress</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 2 - Donations
+                <div class="gallery-item visible-item" data-category="donations">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/school-uniforms-donation/800/600.jpg" alt="Uniform distribution" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Donations</span>
+                                <span class="text-white text-sm font-normal">Uniform Distribution</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 3 - Community
+                <div class="gallery-item visible-item" data-category="community">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/community-gathering-kenya/800/600.jpg" alt="Community meeting" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Community</span>
+                                <span class="text-white text-sm font-normal">Parent Engagement Forum</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 4 - Education (tall)
+                <div class="gallery-item visible-item" data-category="education">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/african-children-books/800/600.jpg" alt="Children reading" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Education</span>
+                                <span class="text-white text-sm font-normal">Reading Together</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 5 - Events
+                <div class="gallery-item visible-item" data-category="events">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/children-talent-show/800/600.jpg" alt="Talent show" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Events</span>
+                                <span class="text-white text-sm font-normal">Talent Development Camp</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 6 - Donations
+                <div class="gallery-item visible-item" data-category="donations">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/shoes-children-africa/800/600.jpg" alt="Shoe distribution" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Donations</span>
+                                <span class="text-white text-sm font-normal">New Shoes, New Smiles</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 7 - Community -->
+                <!-- <div class="gallery-item visible-item" data-category="community">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/health-talk-village/800/600.jpg" alt="Health talk" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Community</span>
+                                <span class="text-white text-sm font-normal">Health & Awareness Talk</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 8 - Events
+                <div class="gallery-item visible-item" data-category="events">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/children-art-painting/800/600.jpg" alt="Art session" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Events</span>
+                                <span class="text-white text-sm font-normal">Art & Creativity Session</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Video 1 - Videos
+                <div class="gallery-item visible-item" data-category="videos">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3] cursor-pointer" onclick="openVideoLightbox('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://picsum.photos/seed/foundation-documentary/800/600.jpg" alt="Foundation documentary" class="w-full h-full object-cover rounded-sm">
+                        <div class="absolute inset-0 bg-natural-900/50 rounded-sm flex items-center justify-center">
+                            <div class="video-play-btn w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg">
+                                <iconify-icon icon="ph:play-fill" class="text-white text-2xl ml-1"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-5 left-5">
+                            <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Video</span>
+                            <span class="text-white text-sm font-normal">Our Story Documentary</span>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-[#FF0000] rounded-sm">
+                            <iconify-icon icon="logos:youtube-icon" class="text-sm"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 9 - Education
+                <div class="gallery-item visible-item" data-category="education">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/school-bags-kids/800/600.jpg" alt="School bags" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Education</span>
+                                <span class="text-white text-sm font-normal">School Bags Handover</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Image 10 - Community -->
+                <!-- <div class="gallery-item visible-item" data-category="community">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3]" onclick="openLightbox(this)">
+                        <img src="https://picsum.photos/seed/volunteers-kenya-field/800/600.jpg" alt="Volunteers" class="w-full h-full object-cover rounded-sm">
+                        <div class="thumb-overlay absolute inset-0 bg-natural-900/40 rounded-sm flex items-end p-5">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Community</span>
+                                <span class="text-white text-sm font-normal">Volunteers at Work</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                            <iconify-icon icon="ph:magnifying-glass-bold" class="text-white text-xs"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Video 2 - Videos
+                <div class="gallery-item visible-item" data-category="videos">
+                    <div class="gallery-thumb rounded-sm relative aspect-[4/3] cursor-pointer" onclick="openVideoLightbox('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                        <img src="https://picsum.photos/seed/children-singing-africa/800/600.jpg" alt="Children singing" class="w-full h-full object-cover rounded-sm">
+                        <div class="absolute inset-0 bg-natural-900/50 rounded-sm flex items-center justify-center">
+                            <div class="video-play-btn w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg">
+                                <iconify-icon icon="ph:play-fill" class="text-white text-2xl ml-1"></iconify-icon>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-5 left-5">
+                            <span class="text-[9px] uppercase tracking-[0.15em] text-gold-light block">Video</span>
+                            <span class="text-white text-sm font-normal">Children's Talent Showcase</span>
+                        </div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 bg-[#FF0000] rounded-sm">
+                            <iconify-icon icon="logos:youtube-icon" class="text-sm"></iconify-icon>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <!--Gallery CTA -->
+            <div class="mt-16 text-center scroll-animate">
+                <p class="text-gray-400 text-sm font-light italic font-serif">More photos and videos will be added as our programs grow.</p>
+                <!-- <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20share%20photos%20or%20videos%20of%20your%20programs." target="_blank" class="inline-flex items-center gap-2 mt-4 text-xs uppercase tracking-[0.15em] text-gold hover:text-gold-dark transition-colors duration-300"> -->
+                    <!-- <iconify-icon icon="ph:upload-bold" class="text-sm"></iconify-icon> Submit Photos & Videos -->
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox fixed inset-0 z-[70] bg-natural-900/95 flex items-center justify-center p-4 md:p-10" onclick="closeLightbox(event)">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all duration-300 z-10">
+            <iconify-icon icon="ph:x-bold" class="text-lg"></iconify-icon>
+        </button>
+        <button id="lightboxPrev" onclick="navigateLightbox(-1, event)" class="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all duration-300 z-10">
+            <iconify-icon icon="ph:caret-left-bold" class="text-xl"></iconify-icon>
+        </button>
+        <button id="lightboxNext" onclick="navigateLightbox(1, event)" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all duration-300 z-10">
+            <iconify-icon icon="ph:caret-right-bold" class="text-xl"></iconify-icon>
+        </button>
+        <div class="lightbox-content max-w-5xl w-full max-h-[85vh] flex items-center justify-center" onclick="event.stopPropagation()">
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-sm shadow-2xl">
+            <div id="lightboxCaption" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
+                <span id="lightboxCat" class="text-[9px] uppercase tracking-[0.15em] text-gold-light block"></span>
+                <span id="lightboxTitle" class="text-white text-sm font-normal"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Lightbox Modal -->
+    <div id="videoLightbox" class="lightbox fixed inset-0 z-[70] bg-natural-900/95 flex items-center justify-center p-4 md:p-10" onclick="closeVideoLightbox(event)">
+        <button onclick="closeVideoLightbox()" class="absolute top-5 right-5 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-all duration-300 z-10">
+            <iconify-icon icon="ph:x-bold" class="text-lg"></iconify-icon>
+        </button>
+        <div class="lightbox-content max-w-5xl w-full aspect-video" onclick="event.stopPropagation()">
+            <iframe id="videoFrame" src="" class="w-full h-full rounded-sm shadow-2xl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
     <!-- Donate Section -->
     <section id="donate" class="py-24 md:py-32 bg-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/3 to-transparent pointer-events-none"></div>
@@ -706,7 +986,7 @@
                     <h4 class="font-serif text-xl tracking-tight">Financial Support</h4>
                     <div class="w-10 h-[1px] bg-gold/30 mt-3"></div>
                     <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">
-                        Any individual or entity that wishes to partner with us can reach out through our number. Financial support can be for one single element of our programs, an entire program, or multiple programs.
+                        Any individual or entity that wishes to partner with us can reach out through our number or email. Financial support can be for one single element of our programs, an entire program, or multiple programs.
                     </p>
                     <div class="mt-6 space-y-3">
                         <div class="p-3 bg-natural-50 rounded-sm">
@@ -731,7 +1011,7 @@
                     <h4 class="font-serif text-xl tracking-tight">Material Donations</h4>
                     <div class="w-10 h-[1px] bg-gold/30 mt-3"></div>
                     <p class="mt-4 text-gray-500 font-light text-sm leading-relaxed">
-                        We accept and welcome donations that are in line with our programs. Your in-kind contributions directly reach the children who need them.
+                        We accept and welcome donations that are in line with our programs. Your in-kind contributions directly reach the children who need them most.
                     </p>
                     <div class="mt-6 flex flex-wrap gap-2">
                         <span class="px-3 py-1.5 bg-natural-50 text-[10px] uppercase tracking-wider text-natural-900 rounded-sm border border-black/5">School Uniforms</span>
@@ -813,13 +1093,16 @@
                     </h2>
                     <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
                     <p class="mt-6 text-gray-500 font-light leading-relaxed">
-                        In 2023, she fell sick and later in the year 2024 she was diagnosed with cancer stage 4. While battling cancer, she was taking care of 4 of her step-sister's grandchildren after their mother died of HIV related complications.
+                        <strong class="text-natural-900 font-normal">Jane Aoko Okuom</strong> — lovingly known as Nyadeje according to Luo cultural tradition — was a woman whose life was defined by sacrifice and compassion. Despite having little, she dedicated her life to helping orphans, needy children and struggling families within her communities.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        She breathed her last breath on <strong class="text-natural-900 font-normal">13/12/2025</strong>, and the children were left without anyone to support their education — prompting me to stand in for them.
+                        She sold local brew, cassava, maize and millet from her small farm just to ensure that children could attend school, have uniforms or receive basic needs. To her, no child deserved to be denied education because of poverty.
                     </p>
                     <p class="mt-4 text-gray-500 font-light leading-relaxed">
-                        Nyadeje Hope Foundation is more than an organization — it is a promise to continue the work of a woman who sold illicit brew (changaa), cassava, and maize from her shamba just to ensure that a child would go to school. Her love knew no bounds.
+                        While battling cancer stage 4, she continued to care for the vulnerable — including her step sister's grandchildren who had been orphaned after losing their mother to HIV-related complications. Her strength, selflessness and dedication to humanity remained unshaken until she passed on <strong class="text-natural-900 font-normal">13th December 2024</strong>.
+                    </p>
+                    <p class="mt-4 text-gray-500 font-light leading-relaxed">
+                        Nyadeje Hope Foundation is more than an organization — it is a continuation of a legacy built on sacrifice, faith and humanity. Her unwavering love for children became the foundation upon which this work stands.
                     </p>
                     <div class="mt-8 p-5 bg-white border border-gold/20 rounded-sm">
                         <p class="font-serif italic text-natural-900 leading-relaxed">
@@ -829,7 +1112,7 @@
                 </div>
 
                 <div class="scroll-animate-right img-hover rounded-sm overflow-hidden order-1 lg:order-2">
-                    <img src="https://picsum.photos/seed/african-grandmother-love/800/1000.jpg" alt="In memory of Nyadeje" class="w-full h-[450px] lg:h-[580px] object-cover">
+                    <img src="imagee4.jpeg" alt="In memory of Nyadeje - Jane Aoko Okuom" class="w-full h-[450px] lg:h-[580px] object-cover">
                 </div>
             </div>
         </div>
@@ -840,22 +1123,22 @@
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
                 <div class="scroll-animate-left">
-                    <span class="text-[11px] uppercase tracking-[0.2em] text-gold font-normal">Get in Touch</span>
+                    <span class="text-[11px] uppercase tracking-[0.2em] text-green-400 font-bold">Get in Touch</span>
                     <h2 class="font-serif text-3xl md:text-4xl font-normal tracking-tight mt-4 leading-tight text-white">
                         Let's Connect & <span class="italic text-gold-light">Partner</span>
                     </h2>
                     <div class="w-16 h-[1px] bg-gold/40 mt-6"></div>
-                    <p class="mt-6 text-white/50 font-light leading-relaxed">
-                        For anyone who wishes to be a partner with us, they can reach out through our number or email. Whether you want to donate, volunteer, partner, or simply learn more — we'd love to hear from you.
+                    <p class="mt-6 text-green-400 font-light leading-relaxed">
+                        For anyone who wishes to partner with us, they can do so through our number or email. Whether you want to donate, volunteer, partner, or simply learn more — we'd love to hear from you.
                     </p>
 
                     <div class="mt-10 space-y-6">
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <iconify-icon icon="ph:phone-bold" class="text-gold"></iconify-icon>
+                                <iconify-icon icon="ph:phone-bold" class="text-blue-400"></iconify-icon>
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Phone</span>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block">Phone</span>
                                 <a href="tel:0725435344" class="text-white hover:text-gold transition-colors duration-300 mt-1 block">0725 435 344</a>
                             </div>
                         </div>
@@ -864,36 +1147,35 @@
                                 <iconify-icon icon="logos:whatsapp-icon" class="text-lg"></iconify-icon>
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">WhatsApp</span>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block">WhatsApp</span>
                                 <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20get%20in%20touch." target="_blank" class="text-white hover:text-[#25D366] transition-colors duration-300 mt-1 block">Chat with us on WhatsApp</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <iconify-icon icon="ph:envelope-bold" class="text-gold"></iconify-icon>
+                                <iconify-icon icon="ph:envelope-bold" class="text-blue-400"></iconify-icon>
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Email</span>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block">Email</span>
                                 <a href="mailto:odumaagnes3@gmail.com" class="text-white hover:text-gold transition-colors duration-300 mt-1 block">odumaagnes3@gmail.com</a>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <iconify-icon icon="ph:bank-bold" class="text-gold"></iconify-icon>
+                                <iconify-icon icon="ph:bank-bold" class="text-blue-400"></iconify-icon>
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Equity Bank</span>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block">Equity Bank</span>
                                 <span class="text-white mt-1 block">A/C No: 1040197512071</span>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <iconify-icon icon="ph:map-pin-bold" class="text-gold"></iconify-icon>
+                                <iconify-icon icon="ph:map-pin-bold" class="text-blue-400"></iconify-icon>
                             </div>
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.15em] text-white/40 block">Location</span>
+                                <span class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block">Location</span>
                                 <span class="text-white mt-1 block">Siaya County, Kenya</span>
-                                <span class="text-white/50 text-sm block">Rarieda • Bondo • Ugenya</span>
                             </div>
                         </div>
                     </div>
@@ -906,38 +1188,39 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
-                                <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">First Name</label>
-                                <input type="text" name="first_name" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Agnes">
+                                <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">First Name</label>
+                                <input type="text" name="first_name" required class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-black/40 italic" placeholder="First name">
                             </div>
                             <div>
-                                <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Last Name</label>
-                                <input type="text" name="last_name" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="Okuom">
+                                <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">Last Name</label>
+                                <input type="text" name="last_name" required class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-black/40 italic" placeholder="Second Name">
                             </div>
                         </div>
                         <div>
-                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Email Address</label>
-                            <input type="email" name="email" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="you@example.com">
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">Email Address</label>
+                            <input type="email" name="email" required class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-black/40 italic" placeholder="Email">
                         </div>
                         <div>
-                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Phone Number</label>
-                            <input type="tel" name="phone" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20" placeholder="+254 7XX XXX XXX">
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">Phone Number</label>
+                            <input type="tel" name="phone" class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-black/40 italic" placeholder="+254 7XX XXX XXX">
                         </div>
                         <div>
-                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">I'd Like To...</label>
-                            <select name="interest" required class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 appearance-none cursor-pointer">
-                                <option value="" class="bg-natural-900">Select an option</option>
-                                <option value="Make a Donation" class="bg-natural-900">Make a Donation</option>
-                                <option value="Volunteer" class="bg-natural-900">Volunteer</option>
-                                <option value="Become a Partner" class="bg-natural-900">Become a Partner</option>
-                                <option value="Donate Materials" class="bg-natural-900">Donate Materials</option>
-                                <option value="Get More Information" class="bg-natural-900">Get More Information</option>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">I'd Like To...</label>
+                            <select name="interest" required class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 appearance-none cursor-pointer">
+                                <option value="" class="bg-white">Select an option</option>
+                                <option value="Make a Donation" class="bg-white">Make a Donation</option>
+                                <option value="Volunteer" class="bg-white">Volunteer</option>
+                                <option value="Become a Partner" class="bg-white">Become a Partner</option>
+                                <option value="Donate Materials" class="white">Donate Materials</option>
+                                <option value="Capacity Building" class="bg-white">Offer Capacity Building</option>
+                                <option value="Get More Information" class="bg-white">Get More Information</option>
                             </select>
                         </div>
                         <div>
-                            <label class="text-[10px] uppercase tracking-[0.15em] text-white/40 block mb-2">Message</label>
-                            <textarea rows="4" name="message" class="w-full bg-white/5 border border-white/10 px-4 py-3 text-white text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-white/20 resize-none" placeholder="Tell us how you'd like to help..."></textarea>
+                            <label class="text-[10px] uppercase tracking-[0.15em] text-green-400 font-bold block mb-2">Message</label>
+                            <textarea rows="4" name="message" class="w-full bg-white border border-white/10 px-4 py-3 text-black text-sm font-light rounded-sm focus:border-gold/50 focus:outline-none transition-colors duration-300 placeholder:text-black/40 italic resize-none" placeholder="Tell us how you'd like to help..."></textarea>
                         </div>
-                        <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm flex items-center justify-center gap-2">
+                        <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-gold text-green-400 font-bold text-white text-xs uppercase tracking-[0.15em] hover:bg-gold-dark transition-colors duration-300 rounded-sm flex items-center justify-center gap-2">
                             <span id="submitText">Send Message</span>
                             <iconify-icon icon="ph:arrow-right-bold" class="text-sm" id="submitIcon"></iconify-icon>
                         </button>
@@ -955,77 +1238,169 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-natural-900 border-t border-white/5 pt-16 pb-8">
-        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div class="lg:col-span-1">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center">
+    <footer class="border-t border-white/5 bg-natural-900">
+        <!-- CTA Strip -->
+        <div class="border-b border-white/5">
+            <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
+                        <iconify-icon icon="ph:heart-bold" class="text-xl text-gold"></iconify-icon>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-serif text-xl tracking-tight">Join Our Mission</h4>
+                        <p class="text-green-400 text-sm font-light mt-0.5">Every contribution makes a lasting difference.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation%2C%20I%20would%20like%20to%20support%20your%20work." target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-[#20BD5A] transition-colors duration-300 rounded-sm">
+                        <iconify-icon icon="logos:whatsapp-icon" class="text-base"></iconify-icon> WhatsApp Us
+                    </a>
+                    <a href="#donate" class="inline-flex items-center gap-2 px-6 py-3 bg-gold text-white text-xs uppercase tracking-[0.15em] font-normal hover:bg-gold-dark transition-colors duration-300 rounded-sm">
+                        <iconify-icon icon="ph:hand-heart-bold"></iconify-icon> Donate Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Footer Grid -->
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8 pt-16 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+
+                <!-- Brand + Founder -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center bg-gold/5">
                             <iconify-icon icon="ph:heart-bold" class="text-lg text-gold"></iconify-icon>
                         </div>
                         <div>
-                            <span class="text-white font-serif text-base tracking-tight">Nyadeje</span>
-                            <span class="block text-[9px] uppercase tracking-[0.2em] text-white/40">Hope Foundation</span>
+                            <span class="text-white font-serif text-lg tracking-tight">Nyadeje</span>
+                            <span class="block text-[9px] uppercase tracking-[0.2em] text-green-400">Hope Foundation</span>
                         </div>
                     </div>
-                    <p class="text-white/40 text-sm font-light leading-relaxed">
-                        Putting God's love into action by supporting vulnerable children in Siaya County, Kenya.
+                    <p class="text-green-400 text-sm font-light leading-relaxed max-w-xs">
+                        Putting God's love into action by supporting vulnerable children through education, psychological support, and talent development in Siaya County, Kenya.
                     </p>
-                    <div class="mt-5 flex items-center gap-3">
-                        <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation" target="_blank" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300"><iconify-icon icon="logos:whatsapp-icon" class="text-base"></iconify-icon></a>
-                        <a href="mailto:odumaagnes3@gmail.com" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300"><iconify-icon icon="ph:envelope-bold" class="text-sm text-white/60"></iconify-icon></a>
-                        <a href="tel:0725435344" class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300"><iconify-icon icon="ph:phone-bold" class="text-sm text-white/60"></iconify-icon></a>
+
+                    <!-- Social Icons -->
+                    <div class="mt-6 flex items-center gap-3">
+                        <a href="https://wa.me/254725435344?text=Hello%20Nyadeje%20Hope%20Foundation" target="_blank" class="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300" title="WhatsApp">
+                            <iconify-icon icon="logos:whatsapp-icon" class="text-base"></iconify-icon>
+                        </a>
+                        <a href="mailto:odumaagnes3@gmail.com" class="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300" title="Email">
+                            <iconify-icon icon="ph:envelope-bold" class="text-sm text-white/60"></iconify-icon>
+                        </a>
+                        <a href="tel:0725435344" class="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/50 hover:bg-gold/10 transition-all duration-300" title="Call">
+                            <iconify-icon icon="ph:phone-bold" class="text-sm text-white/60"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mt-5 flex items-start gap-3">
+                        <iconify-icon icon="ph:map-pin-bold" class="text-gold/60 mt-0.5 flex-shrink-0"></iconify-icon>
+                        <div>
+                            <span class="text-green-400 text-sm font-light">Siaya County, Kenya</span>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Quick Links</h5>
+                <!-- Quick Links -->
+                <div class="lg:col-span-2">
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white font-bold mb-6 flex items-center gap-2">
+                        <span class="w-4 h-[1px] bg-gold/40"></span> Navigation
+                    </h5>
+                    <nav class="space-y-3">
+                        <a href="#about" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">About Us</a>
+                        <a href="#story" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Our Story</a>
+                        <a href="#impact" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Vision & Mission</a>
+                        <a href="#programs" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Programs</a>
+                        <a href="#gallery" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Gallery</a>
+                        <a href="#donate" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Donate</a>
+                        <a href="#contact" class="block text-sm text-green-400 hover:text-gold transition-colors duration-300">Contact</a>
+                    </nav>
+                </div>
+
+                <!-- Programs -->
+                <div class="lg:col-span-3">
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white font-bold mb-6 flex items-center gap-2">
+                        <span class="w-4 h-[1px] bg-gold/40"></span> What We Do
+                    </h5>
                     <div class="space-y-3">
-                        <a href="#about" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">About Us</a>
-                        <a href="#story" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Our Story</a>
-                        <a href="#programs" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Programs</a>
-                        <a href="#donate" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Donate</a>
-                        <a href="#contact" class="block text-sm text-white/40 hover:text-gold transition-colors duration-300">Contact</a>
+                        <a href="#programs" class="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
+                            <iconify-icon icon="ph:graduation-cap-bold" class="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
+                            Education Support
+                        </a>
+                        <a href="#programs" class="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
+                            <iconify-icon icon="ph:star-bold" class="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
+                            Dignity & Self-Esteem
+                        </a>
+                        <a href="#programs" class="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
+                            <iconify-icon icon="ph:megaphone-bold" class="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
+                            Rights Awareness
+                        </a>
+                        <a href="#programs" class="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
+                            <iconify-icon icon="ph:palette-bold" class="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
+                            Talent Development
+                        </a>
+                        <a href="#programs" class="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
+                            <iconify-icon icon="ph:users-three-bold" class="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
+                            Parent Engagement Forums
+                        </a>
                     </div>
                 </div>
 
-                <div>
-                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Programs</h5>
-                    <div class="space-y-3">
-                        <span class="block text-sm text-white/40">Education Support</span>
-                        <span class="block text-sm text-white/40">Rights Awareness</span>
-                        <span class="block text-sm text-white/40">Talent Development</span>
-                        <span class="block text-sm text-white/40">Parent Forums</span>
-                        <span class="block text-sm text-white/40">Dignity & Self-Esteem</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white/60 font-normal mb-5">Donate</h5>
+                <!-- Donation Info -->
+                <div class="lg:col-span-3">
+                    <h5 class="text-[10px] uppercase tracking-[0.2em] text-white font-bold mb-6 flex items-center gap-2">
+                        <span class="w-4 h-[1px] bg-gold/40"></span> Support Us
+                    </h5>
                     <div class="space-y-4">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">M-Pesa</span>
-                            <p class="text-white text-sm font-normal mt-1">0725 435 344</p>
+                        <div class="p-4 bg-white/[0.03] border border-white/[0.06] rounded-sm group hover:border-gold/20 transition-all duration-300">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-[9px] uppercase tracking-[0.15em] text-green-400 font-bold block">M-Pesa Till</span>
+                                    <span class="text-white text-sm font-normal mt-1 block">0725 435 344</span>
+                                </div>
+                                <button onclick="copyToClipboard('0725435344', this)" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/40 hover:bg-gold/10 transition-all duration-300 flex-shrink-0" title="Copy number">
+                                    <iconify-icon icon="ph:copy" class="text-xs text-white/40"></iconify-icon>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">Equity Bank</span>
-                            <p class="text-white text-sm font-normal mt-1">1040197512071</p>
+                        <div class="p-4 bg-white/[0.03] border border-white/[0.06] rounded-sm">
+                            <span class="text-[9px] uppercase tracking-[0.15em] text-green-400 font-bold block">Equity Bank</span>
+                            <span class="text-white text-sm font-normal mt-1 block">1040197512071</span>
+                            <span class="text-green-400 text-xs block mt-0.5">Nyadeje Hope Foundation</span>
                         </div>
-                        <div>
-                            <span class="text-[10px] uppercase tracking-[0.1em] text-white/30">Email</span>
-                            <p class="text-white text-sm font-normal mt-1">odumaagnes3@gmail.com</p>
+                        <div class="p-4 bg-white/[0.03] border border-white/[0.06] rounded-sm">
+                            <span class="text-[9px] uppercase tracking-[0.15em] text-green-400 font-bold block">Email</span>
+                            <a href="mailto:odumaagnes3@gmail.com" class="text-white text-sm font-normal mt-1 block hover:text-gold transition-colors duration-300">odumaagnes3@gmail.com</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-white/30 text-xs font-light">
-                    &copy; 2025 Nyadeje Hope Foundation. All rights reserved.
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-white/5">
+            <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-green-400 font-bold text-xs font-light">
+                    &copy; <span id="currentYear">2025</span> Nyadeje Hope Foundation. All rights reserved.
                 </p>
-                <p class="text-white/20 text-xs font-light italic font-serif">
-                    "Every child deserves hope"
-                </p>
+                <div class="flex items-center gap-6">
+                    <span class="text-green-400 font-bold text-xs font-light italic font-serif">"Every child deserves hope"</span>
+                    <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:border-gold/40 hover:bg-gold/10 transition-all duration-300 group" title="Back to top">
+                        <iconify-icon icon="ph:arrow-up-bold" class="text-xs text-white/30 group-hover:text-gold transition-colors duration-300"></iconify-icon>
+                    </button>
+                </div>
+                <div class="mt-6 flex items-center gap-4 p-4 bg-white/[0.03] border border-white/[0.06] rounded-sm">
+                        <img src="imagee3.jpeg" alt="Agnes Oduma - Founder" class="w-40 h-40 rounded-sm object-cover border-2 border-gold/30 flex-shrink-0">
+                        <div>
+                            <span class="text-[9px] uppercase tracking-[0.15em] text-green-400 block">Founder</span>
+                            <span class="text-white text-sm font-bold block">Agnes Oduma</span>
+                            <span class="text-green-400 text-xs block">30+ years in social work</span>
+                        </div>
+                    </div>
+
             </div>
         </div>
     </footer>
@@ -1056,7 +1431,123 @@
                 ? '<iconify-icon icon="ph:x-bold" class="text-2xl"></iconify-icon>'
                 : '<iconify-icon icon="ph:list-bold" class="text-2xl"></iconify-icon>';
         }
+         // Filter gallery items
+        function filterGallery(category) {
+            // Update button states
+            document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-gray-500');
+            });
+            event.target.classList.add('active');
+            event.target.classList.remove('text-gray-500');
 
+            // Filter items
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                const itemCat = item.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
+                    item.classList.remove('hidden-item');
+                    item.classList.add('visible-item');
+                } else {
+                    item.classList.remove('visible-item');
+                    item.classList.add('hidden-item');
+                }
+            });
+        }
+
+        // Track visible images for lightbox navigation
+        let currentLightboxIndex = 0;
+        let visibleImages = [];
+
+        function getVisibleImageElements() {
+            return Array.from(document.querySelectorAll('.gallery-item.visible-item .gallery-thumb')).filter(
+                thumb => !thumb.querySelector('.video-play-btn')
+            );
+        }
+
+        // Open image lightbox
+        function openLightbox(thumbElement) {
+            visibleImages = getVisibleImageElements();
+            currentLightboxIndex = visibleImages.indexOf(thumbElement);
+
+            const img = thumbElement.querySelector('img');
+            const catEl = thumbElement.querySelector('.thumb-overlay span:first-child');
+            const titleEl = thumbElement.querySelector('.thumb-overlay span:last-child');
+
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxImg').alt = img.alt;
+            document.getElementById('lightboxCat').textContent = catEl ? catEl.textContent : '';
+            document.getElementById('lightboxTitle').textContent = titleEl ? titleEl.textContent : '';
+
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Show/hide nav buttons
+            updateLightboxNav();
+        }
+
+        function navigateLightbox(direction, e) {
+            if (e) e.stopPropagation();
+            currentLightboxIndex += direction;
+            if (currentLightboxIndex < 0) currentLightboxIndex = visibleImages.length - 1;
+            if (currentLightboxIndex >= visibleImages.length) currentLightboxIndex = 0;
+
+            const thumb = visibleImages[currentLightboxIndex];
+            const img = thumb.querySelector('img');
+            const catEl = thumb.querySelector('.thumb-overlay span:first-child');
+            const titleEl = thumb.querySelector('.thumb-overlay span:last-child');
+
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxImg').alt = img.alt;
+            document.getElementById('lightboxCat').textContent = catEl ? catEl.textContent : '';
+            document.getElementById('lightboxTitle').textContent = titleEl ? titleEl.textContent : '';
+
+            updateLightboxNav();
+        }
+
+        function updateLightboxNav() {
+            const prevBtn = document.getElementById('lightboxPrev');
+            const nextBtn = document.getElementById('lightboxNext');
+            if (visibleImages.length <= 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'flex';
+                nextBtn.style.display = 'flex';
+            }
+        }
+
+        function closeLightbox(e) {
+            if (e && e.target !== document.getElementById('lightbox') && !e.target.closest('button')) return;
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Open video lightbox
+        function openVideoLightbox(url) {
+            document.getElementById('videoFrame').src = url + '?autoplay=1';
+            document.getElementById('videoLightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoLightbox(e) {
+            if (e && e.target !== document.getElementById('videoLightbox') && !e.target.closest('button')) return;
+            document.getElementById('videoFrame').src = '';
+            document.getElementById('videoLightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
+            }
+            if (document.getElementById('videoLightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeVideoLightbox();
+            }
+        });
         const navbar = document.getElementById('navbar');
         let lastScroll = 0;
 
@@ -1156,7 +1647,6 @@
             setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
 
-        // Formspree submission
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const form = this;
