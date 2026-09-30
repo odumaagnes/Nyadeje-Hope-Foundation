@@ -26,7 +26,7 @@ export const blogPosts = [
     category: 'Education',
     date: 'August 2026',
     image: '/gallery/school-1.jpg',
-    excerpt: 'For many of our sponsored pupils, a school uniform is more than clothing — it is dignity, belonging, and a ticket back into the classroom.',
+    excerpt: 'For many children in schools, a school uniform is more than clothing — it is dignity, belonging, and a ticket back into the classroom.',
     content: [
       'For many of the children we support in Siaya County, the start of a new school term brings a familiar worry: will there be a uniform, books, and shoes waiting for them, or will they have to stay home again this year?',
       'Through our education support program, we work directly with families and schools to make sure that worry does not stand between a child and their classroom. This term, we were able to walk alongside several of our sponsored pupils as they suited up in a fresh uniform, packed their bags, and headed back to school with their heads held high.',

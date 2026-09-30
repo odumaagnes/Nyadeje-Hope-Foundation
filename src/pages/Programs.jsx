@@ -76,7 +76,7 @@ export default function Programs() {
                         <span className="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">04</span>
                     </div>
                     <div className="md:col-span-4">
-                        <h4 className="font-serif text-xl md:text-2xl tracking-tight">Talent Development Camps</h4>
+                        <h4 className="font-serif text-xl md:text-2xl tracking-tight">Talent Development Programs</h4>
                     </div>
                     <div className="md:col-span-5">
                         <p className="text-gray-500 font-light leading-relaxed">
@@ -93,7 +93,7 @@ export default function Programs() {
                         <span className="font-serif text-3xl text-gold/40 group-hover:text-gold transition-colors duration-300">05</span>
                     </div>
                     <div className="md:col-span-4">
-                        <h4 className="font-serif text-xl md:text-2xl tracking-tight">Community Empowerment</h4>
+                        <h4 className="font-serif text-xl md:text-2xl tracking-tight">Community Empowerment Program</h4>
                     </div>
                     <div className="md:col-span-5">
                         <p className="text-gray-500 font-light leading-relaxed">

@@ -104,11 +104,11 @@ export default function Footer({ onNavigate }) {
               </a>
               <a href="#programs" onClick={go('programs', 'programs')} className="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
                 <iconify-icon icon="ph:star-bold" className="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
-                Dignity & Self-Esteem
+                Psychosocial Support
               </a>
               <a href="#programs" onClick={go('programs', 'programs')} className="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
                 <iconify-icon icon="ph:megaphone-bold" className="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
-                Rights Awareness
+                Advocacy Program
               </a>
               <a href="#programs" onClick={go('programs', 'programs')} className="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
                 <iconify-icon icon="ph:palette-bold" className="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
@@ -116,7 +116,7 @@ export default function Footer({ onNavigate }) {
               </a>
               <a href="#programs" onClick={go('programs', 'programs')} className="flex items-center gap-2.5 text-sm text-green-400 hover:text-gold transition-colors duration-300 group">
                 <iconify-icon icon="ph:users-three-bold" className="text-xs text-blue-400 group-hover:text-gold/60 transition-colors duration-300"></iconify-icon>
-                Parent Engagement Forums
+                Community Empowerment
               </a>
             </div>
           </div>
