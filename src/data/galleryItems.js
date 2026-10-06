@@ -44,7 +44,7 @@ export const galleryItems = [
     category: 'education',
     src: '/gallery/school-1.jpg',
     title: 'Ready for School',
-    description: 'A sponsored pupil and her little brother, dressed in uniform and ready for another school day, with their Founder/Mentor.',
+    description: 'Some of the beneficiaries dressed in school uniform and ready to go to school with the smile on their faces.',
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export const galleryItems = [
     src: '/gallery/comm-1-thumb.jpg',
     videoFile: '/gallery/comm-1.mp4',
     title: 'Community Gathering Highlights',
-    description: 'Moments from a community gathering bringing together mothers, children and volunteers in Siaya County.',
+    description: 'Moments from a community gathering, bringing together young mother for empowerment program',
   },
   {
     id: 4,
@@ -71,14 +71,14 @@ export const galleryItems = [
     title: 'Restoring the Land Together',
     description: 'The wider group pauses to celebrate a successful day of reforestation work on the hillside.',
   },
-  {
-    id: 6,
-    type: 'image',
-    category: 'outreach',
-    src: '/gallery/out-1.jpg',
-    title: 'Partnership Meeting',
-    description: 'Our founder meeting with partners to discuss child welfare programs.',
-  },
+  // {
+  //   id: 6,
+  //   type: 'image',
+  //   category: 'outreach',
+  //   src: '/gallery/out-1.jpg',
+  //   title: 'Partnership Meeting',
+  //   description: 'Our founder meeting with partners to discuss child welfare programs.',
+  // },
   {
     id: 7,
     type: 'image',

@@ -30,7 +30,7 @@ export const blogPosts = [
     content: [
       'For many of the children we support in Siaya County, the start of a new school term brings a familiar worry: will there be a uniform, books, and shoes waiting for them, or will they have to stay home again this year?',
       'Through our education support program, we work directly with families and schools to make sure that worry does not stand between a child and their classroom. This term, we were able to walk alongside several of our sponsored pupils as they suited up in a fresh uniform, packed their bags, and headed back to school with their heads held high.',
-      'Behind every uniform is a story of a caregiver who never gave up, a mentor who kept checking in, and a community that chose to invest in a child\u2019s future. We are grateful to everyone who makes this possible, and we remain committed to walking with these children for as long as it takes.',
+      'Behind every uniform is a story of a person who sacrificed and never gave up, a mentor who kept checking in, and a community that chose to invest in a child\u2019s future. We are grateful to everyone who makes this possible, and we remain committed to walking with these children for as long as it takes.',
     ],
   },
   {
@@ -48,15 +48,14 @@ export const blogPosts = [
   },
   {
     id: 3,
-    title: 'Partnering with Meru Prison Stars Volleyball Club',
+    title: 'Support from meru volleyball club',
     category: 'Outreach',
     date: 'April 2026',
     image: '/gallery/out-2.jpg',
     excerpt: 'A heartfelt donation drive in partnership with the Meru Prison Stars Volleyball Club brought essential supplies to families in need.',
     content: [
-      'Community partnerships are at the heart of how we extend our reach. Recently, we joined hands with the Meru Prison Stars Volleyball Club for a donation drive supporting families and children with essential household and hygiene supplies.',
-      'Members of the club, together with our team and community volunteers, packed and distributed food staples, sanitary items and other necessities to families who needed a little extra support this season.',
-      'These partnerships remind us that hope is a team effort — it grows fastest when organizations, clubs and everyday community members choose to show up for one another.',
+      'Community partnerships are at the heart of how we extend our reach. We were blessed to have the meru volleyball club who made their donation of  food staples, sanitary items and other necessities to support children',
+      'These kind actions remind us that hope is a team effort — it grows fastest when organizations, clubs and everyday community members choose to show up for one another.',
     ],
   },
   {
